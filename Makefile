@@ -10,18 +10,22 @@ CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
+MLX = ./mlx/libmlx.a
+
 RM = rm -f
 
-SRC = main.c
+SRC = main.c pruebas.c
 
 OBJS = ${SRC:.c=.o}
-
+#Hay que añadir los includes como dependencias
 $(NAME): $(OBJS)
 		@make -C $(LIBFTDIR)
-		$(CC) -o $(NAME) $(MLXFLAGS) $(OBJS)
+		#$(CC) -o $(NAME) $(MLXFLAGS) $(OBJS) $(LIBFT) Descomentar en 42
+		$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address -o $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	#$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)
 

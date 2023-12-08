@@ -1,17 +1,23 @@
 #ifndef FDF_H
-# define FT_PRINTF_H
+# define FDF_H 
 
+# include <math.h>
 # include "libft/libft.h"
-# include <mlx.h>
+# include "mlx/mlx.h" //Comentar en 42
+//# include <mlx.h>   //Comentar en casa
+
+# define SCREEN_WIDTH	720
+# define SCREEN_HEIGHT	480
+# define MAIN_COLOR	0x00FF0000
 
 typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int		bbp;
-	int		line_length;
-	int		endian;
+	int	bbp;
+	int	line_length;
+	int	endian;
 } t_data;
 
-int	main (void);
+void	pruebas (void);
 #endif

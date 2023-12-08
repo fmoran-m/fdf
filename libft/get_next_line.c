@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int	is_intro(char *buf)
+static int	is_intro(char *buf)
 {
 	int	i;
 
@@ -28,7 +28,7 @@ int	is_intro(char *buf)
 	return (0);
 }
 
-char	*read_line(int fd, char *file)
+static char	*read_line(int fd, char *file)
 {
 	char	*buf;
 	char	*temp;
@@ -56,7 +56,7 @@ char	*read_line(int fd, char *file)
 	return (file);
 }
 
-char	*new_line(char *file)
+static char	*new_line(char *file)
 {
 	int		i;
 	int		j;
@@ -80,7 +80,7 @@ char	*new_line(char *file)
 	return (line);
 }
 
-char	*new_file(char *file, char *line)
+static char	*new_file(char *file, char *line)
 {
 	char	*str;
 	int		i;

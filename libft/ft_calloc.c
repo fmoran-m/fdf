@@ -23,8 +23,8 @@ void	*ft_calloc(size_t count, size_t size)
 		return (NULL);
 	total_amount = size * count;
 	ptr = malloc(total_amount);
-	if (ptr == 0)
-		return (0);
+	if (!ptr)
+		return (NULL);
 	while (i < total_amount)
 	{
 		ptr[i] = 0;
