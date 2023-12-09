@@ -8,7 +8,7 @@
 
 # define SCREEN_WIDTH	720
 # define SCREEN_HEIGHT	480
-# define MAIN_COLOR	0x00FF0000
+# define MAIN_COLOR	0x00FFFFFF
 
 typedef struct s_data
 {
@@ -19,5 +19,5 @@ typedef struct s_data
 	int	endian;
 } t_data;
 
-void	pruebas (void);
+void	pruebas (int x_counter, int y_counter);
 #endif

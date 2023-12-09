@@ -147,18 +147,7 @@ int main (int argc, char **argv)
     matrix = matrix_allocation(y_counter, argv[1]);
     x_counter = ft_count_words(matrix[0], 32);
     n_matrix = massive_atoi(matrix, y_counter, x_counter);
+    pruebas(x_counter, y_counter);
     free_matrix(matrix, y_counter);
-    int a = 0;
-    while (n_matrix[a] != NULL)
-    {
-	int b = 0;
-	while (b < x_counter)
-	{
-	    printf("%d\n", n_matrix[a][b]);
-	    b++;
-	}
-	a++;
-    }
     free_nmatrix(n_matrix, y_counter);
-    return (0);
 }
