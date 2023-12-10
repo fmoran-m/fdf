@@ -14,10 +14,10 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int	bbp;
-	int	line_length;
-	int	endian;
-} t_data;
+	int		bbp;
+	int		line_length;
+	int		endian;
+}				t_data;
 
-void	pruebas (int x_counter, int y_counter);
+void	pruebas(int x_counter, int y_counter);
 #endif
