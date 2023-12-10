@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:29 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/05 15:06:00 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:33:05 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,19 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-
 typedef struct s_list
 {
 	void			*content;
 	struct s_list	*next;
 }				t_list;
-struct s_vars
+typedef struct s_gnl
+{
+	char	*buf;
+	char	*temp;
+	ssize_t	buf_read;
+}				t_gnl;
+
+struct	s_vars
 {
 	int	total;
 	int	i;

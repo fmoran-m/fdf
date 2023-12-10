@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/31 15:38:48 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/05 15:06:24 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/10 23:31:57 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,29 +30,29 @@ static int	is_intro(char *buf)
 
 static char	*read_line(int fd, char *file)
 {
-	char	*buf;
-	char	*temp;
-	ssize_t	buf_read;
+	t_gnl	data;
 
 	if (!file)
 		file = ft_strdup("");
-	buf = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
-	if (!buf)
+	if (!file)
+		return (NULL);
+	data.buf = (char *)ft_calloc(BUFFER_SIZE + 1, sizeof(char));
+	if (!data.buf)
 		return (free_file(&file));
-	buf_read = 1;
-	while (buf_read > 0 && !is_intro(buf))
+	data.buf_read = 1;
+	while (data.buf_read > 0 && !is_intro(data.buf))
 	{
-		buf_read = read(fd, buf, BUFFER_SIZE);
-		if (buf_read == -1)
-			return (free(buf), free_file(&file));
-		buf[buf_read] = 0;
-		temp = ft_strjoin(file, buf);
-		if (!temp)
-			return (free (buf), free_file(&file));
+		data.buf_read = read(fd, data.buf, BUFFER_SIZE);
+		if (data.buf_read == -1)
+			return (free(data.buf), free_file(&file));
+		data.buf[data.buf_read] = 0;
+		data.temp = ft_strjoin(file, data.buf);
+		if (!data.temp)
+			return (free (data.buf), free_file(&file));
 		free (file);
-		file = temp;
+		file = data.temp;
 	}
-	free (buf);
+	free (data.buf);
 	return (file);
 }
 
