@@ -24,7 +24,7 @@ $(NAME): $(OBJS)
 		$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address -o $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -c $< -o $@
 	#$(CC) $(CFLAGS) -c $< -o $@
 
 all: $(NAME)

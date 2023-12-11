@@ -72,16 +72,22 @@ static t_map	*create_node(char *str, unsigned long long int *i, int x_counter, i
 	return (new_node);
 }
 
-static t_map	**create_map(char *str, int *y_counter)
+static t_map	*create_map(char *str, int *y_counter)
 {
-	t_map 						**lst;
+	t_map						*head;
+	t_map						*tail;
+	t_map						**ref_head;
+	t_map						**ref_tail;
 	t_map						*new_node;
 	int							x_counter;
 	unsigned long long int		i;
 
+	head = NULL;
+	tail = NULL;
+	ref_head = &head;
+	ref_tail = &tail;
 	i = 0;
 	x_counter = 0;
-	lst = NULL;
 	while (str[i])
 	{
 		if (str[i] != ' ')
@@ -94,21 +100,21 @@ static t_map	**create_map(char *str, int *y_counter)
 			else
 			{
 				new_node = create_node(str, &i, x_counter, *y_counter);
-				ft_lstadd_back_map(lst, new_node);
+				ft_lstadd_back_map(ref_tail, ref_head, new_node);
 				x_counter++;
 			}
 		}
 		else
 			i++;
 	}
-	return (lst);
+	return (head);
 }
 
-static t_map	**parse_map(char *argv, int *y_counter)
+static t_map	*parse_map(char *argv, int *y_counter)
 {
 	int		fd;
 	char	*str;
-	t_map	**lst;
+	t_map	*lst;
 
 	fd = open(argv, O_RDONLY);
 	str = full_read(fd);
@@ -118,7 +124,7 @@ static t_map	**parse_map(char *argv, int *y_counter)
 
 int	main(int argc, char **argv)
 {
-	t_map	**lst;
+	t_map	*lst;
 	int		y_counter;
 
 	y_counter = 0;
@@ -126,8 +132,8 @@ int	main(int argc, char **argv)
 		return (-1);
 	lst = parse_map(argv[1], &y_counter);
 	while (lst) {
-		printf("Node: x = %d, y = %d, z = %d, color = %d\n", (*lst)->x, (*lst)->y, (*lst)->z, (*lst)->color);
-        lst = &(*lst)->next;
+		printf("Node: x = %d, y = %d, z = %d, color = %d\n", lst->x, lst->y, lst->z, lst->color);
+        lst = lst->next;
     }
 	return 0;
 }

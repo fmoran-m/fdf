@@ -36,7 +36,7 @@ typedef struct s_read
 }				t_read;
 
 void	pruebas(int x_counter, int y_counter);
-void    ft_lstadd_back_map(t_map **lst, t_map *new);
+void    ft_lstadd_back_map(t_map **lst, t_map **head, t_map *new);
 t_map   *ft_lstlast_map(t_map *lst);
 t_map   *ft_lstnew_map(int x_counter, int y_counter, int z_value, int color);
 #endif
