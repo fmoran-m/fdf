@@ -27,7 +27,7 @@ static char	*full_read(int fd)
 	return (data.str);
 }
 
-static t_map	*create_node(char *str, unsigned long long int i, int x_counter, int y_counter)
+static t_map	*create_node(char *str, unsigned long long int *i, int x_counter, int y_counter)
 {
 	unsigned long long int		j;
 	int		k;
@@ -39,11 +39,11 @@ static t_map	*create_node(char *str, unsigned long long int i, int x_counter, in
 	z_value = 0;
 	k = 0;
 	color = 0;
-	j = i;
-	while (str[i] && str[i] != ' ' && str[i] != '\n' && str[i] != ',')
-		i++;
-	temp = (char *)ft_calloc(i - j + 1, sizeof(char));
-	while (j < i)
+	j = *i;
+	while (str[*i] && str[*i] != ' ' && str[*i] != '\n' && str[*i] != ',')
+		(*i)++;
+	temp = (char *)ft_calloc(*i - j + 1, sizeof(char));
+	while (j < *i)
 	{
 		temp[k] = str[j];
 		j++;
@@ -52,14 +52,14 @@ static t_map	*create_node(char *str, unsigned long long int i, int x_counter, in
 	z_value = ft_atoi(temp);
 	free(temp);
 	k = 0;
-	if (str[i] == ',')
+	if (str[*i] == ',')
 	{
-		i++;
+		(*i)++;
 		j++;
-		while (str[i] && str[i] != ' ' && str[i] != '\n')
-			i++;
-		temp = (char *)ft_calloc(i - j + 1, sizeof(char));
-		while (j < i)
+		while (str[*i] && str[*i] != ' ' && str[*i] != '\n')
+			(*i)++;
+		temp = (char *)ft_calloc(*i - j + 1, sizeof(char));
+		while (j < *i)
 		{
 			temp[k] = str[j];
 			j++;
@@ -93,7 +93,7 @@ static t_map	**create_map(char *str, int *y_counter)
 			}
 			else
 			{
-				new_node = create_node(str, i, x_counter, *y_counter);
+				new_node = create_node(str, &i, x_counter, *y_counter);
 				ft_lstadd_back_map(lst, new_node);
 				x_counter++;
 			}
@@ -125,8 +125,8 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (-1);
 	lst = parse_map(argv[1], &y_counter);
-	    while (*lst) {
-        printf("Node: x = %d, y = %d, z = %d, color = %d\n", (*lst)->x, (*lst)->y, (*lst)->z, (*lst)->color);
+	while (lst) {
+		printf("Node: x = %d, y = %d, z = %d, color = %d\n", (*lst)->x, (*lst)->y, (*lst)->z, (*lst)->color);
         lst = &(*lst)->next;
     }
 	return 0;
