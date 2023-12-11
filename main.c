@@ -76,16 +76,16 @@ static t_map	*create_map(char *str, int *y_counter)
 {
 	t_map						*head;
 	t_map						*tail;
-	t_map						**ref_head;
-	t_map						**ref_tail;
+//	t_map						**ref_head;
+//	t_map						**ref_tail;
 	t_map						*new_node;
 	int							x_counter;
 	unsigned long long int		i;
 
 	head = NULL;
 	tail = NULL;
-	ref_head = &head;
-	ref_tail = &tail;
+	//ref_head = &head;
+	//ref_tail = &tail;
 	i = 0;
 	x_counter = 0;
 	while (str[i])
@@ -100,7 +100,7 @@ static t_map	*create_map(char *str, int *y_counter)
 			else
 			{
 				new_node = create_node(str, &i, x_counter, *y_counter);
-				ft_lstadd_back_map(ref_tail, ref_head, new_node);
+				ft_lstadd_back_map(&tail, &head, new_node);
 				x_counter++;
 			}
 		}
