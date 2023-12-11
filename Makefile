@@ -14,7 +14,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c pruebas.c
+SRC = main.c pruebas.c ft_lstnew_map.c ft_lstlast_map.c ft_lstadd_back_map.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias

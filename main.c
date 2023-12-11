@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-char	*full_read(int fd)
+static char	*full_read(int fd)
 {
 	t_read	data;
 
@@ -27,11 +27,84 @@ char	*full_read(int fd)
 	return (data.str);
 }
 
-t_map	**create_map(char *str)
+static t_map	*create_node(char *str, unsigned long long int i, int x_counter, int y_counter)
 {
-	t_map **lst;
+	unsigned long long int		j;
+	int		k;
+	int		z_value;
+	int		color;
+	char	*temp;
+	t_map	*new_node;
 
-t_map	**parse_map(char *argv)
+	z_value = 0;
+	k = 0;
+	color = 0;
+	j = i;
+	while (str[i] && str[i] != ' ' && str[i] != '\n' && str[i] != ',')
+		i++;
+	temp = (char *)ft_calloc(i - j + 1, sizeof(char));
+	while (j < i)
+	{
+		temp[k] = str[j];
+		j++;
+		k++;
+	}
+	z_value = ft_atoi(temp);
+	free(temp);
+	k = 0;
+	if (str[i] == ',')
+	{
+		i++;
+		j++;
+		while (str[i] && str[i] != ' ' && str[i] != '\n')
+			i++;
+		temp = (char *)ft_calloc(i - j + 1, sizeof(char));
+		while (j < i)
+		{
+			temp[k] = str[j];
+			j++;
+			k++;
+		}
+		color = ft_atoi(temp);
+		free(temp);
+	}
+	new_node = ft_lstnew_map(x_counter, y_counter, z_value, color);
+	return (new_node);
+}
+
+static t_map	**create_map(char *str, int *y_counter)
+{
+	t_map 						**lst;
+	t_map						*new_node;
+	int							x_counter;
+	unsigned long long int		i;
+
+	i = 0;
+	x_counter = 0;
+	lst = NULL;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+		{
+			if (str[i] == '\n')
+			{
+				(*y_counter)++;
+				i++;
+			}
+			else
+			{
+				new_node = create_node(str, i, x_counter, *y_counter);
+				ft_lstadd_back_map(lst, new_node);
+				x_counter++;
+			}
+		}
+		else
+			i++;
+	}
+	return (lst);
+}
+
+static t_map	**parse_map(char *argv, int *y_counter)
 {
 	int		fd;
 	char	*str;
@@ -39,17 +112,22 @@ t_map	**parse_map(char *argv)
 
 	fd = open(argv, O_RDONLY);
 	str = full_read(fd);
-	printf("%s", str); //Acordarse de borrar
-	lst = create_map(str);
+	lst = create_map(str, y_counter);
 	return (lst);
 }
 
 int	main(int argc, char **argv)
 {
 	t_map	**lst;
+	int		y_counter;
 
+	y_counter = 0;
 	if (argc != 2)
 		return (-1);
-	parse_map(argv[1]);
+	lst = parse_map(argv[1], &y_counter);
+	    while (*lst) {
+        printf("Node: x = %d, y = %d, z = %d, color = %d\n", (*lst)->x, (*lst)->y, (*lst)->z, (*lst)->color);
+        lst = &(*lst)->next;
+    }
 	return 0;
 }

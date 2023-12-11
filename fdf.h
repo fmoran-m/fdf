@@ -21,11 +21,11 @@ typedef struct s_data
 }				t_data;
 typedef struct s_map
 {
-	int		x;
-	int		y;
-	int		z;
-	int		color;
-	char	*next;
+	int				x;
+	int				y;
+	int				z;
+	int				color;
+	struct s_map	*next;
 }				t_map;
 typedef struct s_read
 {
@@ -36,4 +36,7 @@ typedef struct s_read
 }				t_read;
 
 void	pruebas(int x_counter, int y_counter);
+void    ft_lstadd_back_map(t_map **lst, t_map *new);
+t_map   *ft_lstlast_map(t_map *lst);
+t_map   *ft_lstnew_map(int x_counter, int y_counter, int z_value, int color);
 #endif
