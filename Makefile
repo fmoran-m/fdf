@@ -20,8 +20,8 @@ OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias
 $(NAME): $(OBJS)
 		@make -C $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(MLXFLAGS) $(OBJS) $(LIBFT) Descomentar en 42
-		$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address -o $(NAME)
+		$(CC) -o $(NAME) $(MLXFLAGS) $(OBJS) $(LIBFT)
+		#$(CC) $(OBJS) $(LIBFT) $(MLX) -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -fsanitize=address -o $(NAME)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@

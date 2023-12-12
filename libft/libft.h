@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:29 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/05 15:06:00 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/12 21:06:48 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,4 +95,5 @@ int				write_upper_hex(va_list args);
 int				write_pointer_address(va_list args);
 char			*free_file(char **file);
 char			*get_next_line(int fd);
+int				ft_hexatoi(const char *str);
 #endif

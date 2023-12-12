@@ -87,7 +87,7 @@ static void	free_matrix(char **matrix, int y_counter)
 	free (matrix);
 }
 
-static void	free_nmatrix(int **n_matrix, int y_counter)
+static void	free_nmatrix(t_node **n_matrix, int y_counter)
 {
 	int	i;
 
@@ -100,14 +100,41 @@ static void	free_nmatrix(int **n_matrix, int y_counter)
 	free (n_matrix);
 }
 
-static int	**massive_atoi(char **matrix, int y_counter, int x_counter)
+t_node	parse_line(char *temp, int a, int b)
 {
-	int		**n_matrix;
-	char	**temp;
-	int		a;
-	int		b;
-	int		j;
-	int		i;
+	int	i;
+	t_node	*new;
+
+	i = 0;
+	new = ft_calloc(1, sizeof(new));
+	new->x = a;
+	new->y = b;
+	while (temp[i] && temp[i] != ',')
+		i++;
+	if (!temp[i])
+	{
+		new->z = ft_atoi(temp);
+		new->color = 0;
+	}
+	else
+	{
+		temp[i] = 0;
+		new->z = ft_atoi(temp);
+		i++;
+		temp = temp + i;
+		new->color = ft_hexatoi(temp);
+	}
+	return (*new);
+}
+
+static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
+{
+	t_node		**n_matrix;
+	char		**temp;
+	int			a;
+	int			b;
+	int			j;
+	int			i;
 
 	n_matrix = ft_calloc(y_counter + 1, sizeof(int *));
 	temp = NULL;
@@ -118,10 +145,10 @@ static int	**massive_atoi(char **matrix, int y_counter, int x_counter)
 		temp = ft_split(matrix[i], 32);
 		j = 0;
 		b = 0;
-		n_matrix[a] =(int *)ft_calloc (x_counter + 1, sizeof(int));
+		n_matrix[a] =(t_node *)ft_calloc(x_counter + 1, sizeof(int));
 		while (temp[j])
 		{
-			n_matrix[a][b] = ft_atoi(temp[j]);
+			n_matrix[a][b] = parse_line(temp[j], a, b);
 			b++;
 			j++;
 		}
@@ -134,10 +161,10 @@ static int	**massive_atoi(char **matrix, int y_counter, int x_counter)
 
 int	main(int argc, char **argv)
 {
-	int		y_counter;
-	int		x_counter;
-	char	**matrix;
-	int		**n_matrix;
+	int			y_counter;
+	int			x_counter;
+	char		**matrix;
+	t_node		**n_matrix;
 
 	y_counter = 0;
 	x_counter = 1;
@@ -147,7 +174,13 @@ int	main(int argc, char **argv)
 	matrix = matrix_allocation(y_counter, argv[1]);
 	x_counter = ft_count_words(matrix[0], 32);
 	n_matrix = massive_atoi(matrix, y_counter, x_counter);
-	pruebas(x_counter, y_counter);
+	//pruebas(x_counter, y_counter);
+	for (int i = 0; i < y_counter; i++)
+	{
+		for (int j = 0; j < x_counter; j++)
+			printf("x = %d, y = %d, z = %d, color = %d\n", n_matrix[i][j].x, n_matrix[i][j].y, n_matrix[i][j].z, n_matrix[i][j].color);
+	}
 	free_matrix(matrix, y_counter);
 	free_nmatrix(n_matrix, y_counter);
+	return 0;
 }
