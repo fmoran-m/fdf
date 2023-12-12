@@ -1,53 +1,44 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */ /*   Created: 2023/12/05 18:00:43 by fmoran-m          #+#    #+#             */ /*   Updated: 2023/12/05 21:37:30 by fmoran-m         ###   ########.fr       */ /*                                                                            */ /* ************************************************************************** */ 
-
 #include "fdf.h"
 
 static void	put_img_pixel(t_data img, int x, int y, int color)
 {
-	char *pixel;
+	char	*pixel;
 
-	pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x)); //Aritmética de punteros
-	*(unsigned int*)pixel = color;
+	pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x));
+	*(unsigned int*) pixel = color;
 }
 
-
-static void paint_image(t_data img, int color, int x_counter, int y_counter)
+static void	paint_image(t_data img, int color, int x_counter, int y_counter)
 {
-    int	x;
-    int	y;
-    int x_space;
-    int y_space;
-    
-    x_space = (SCREEN_WIDTH/1.2)/x_counter;
-    y_space = (SCREEN_HEIGHT/1.2)/y_counter;
-    y = 0;
-    while (y <= y_space * y_counter)
-    {
-	x = 0;
-	while(x <= x_space * x_counter)
-	{
-	    put_img_pixel(img, x, y, color);
-	    x++;
-	}
-	y = y + y_space;
-    }
-    x = 0;
-    while (x <= x_space * x_counter)
-    {
+	int	x;
+	int	y;
+	int	x_space;
+	int	y_space;
+
+	x_space = (SCREEN_WIDTH / 1.2) / x_counter;
+	y_space = (SCREEN_HEIGHT / 1.2) / y_counter;
 	y = 0;
 	while (y <= y_space * y_counter)
 	{
-	    put_img_pixel(img, x, y, color);
-	    y++;
+		x = 0;
+		while (x <= x_space * x_counter)
+		{
+			put_img_pixel(img, x, y, color);
+			x++;
+		}
+		y = y + y_space;
 	}
-	x = x + x_space;
-    }
+	x = 0;
+	while (x <= x_space * x_counter)
+	{
+		y = 0;
+		while (y <= y_space * y_counter)
+		{
+			put_img_pixel(img, x, y, color);
+			y++;
+		}
+		x = x + x_space;
+	}
 }
 
 void	pruebas(int x_counter, int y_counter)
@@ -55,7 +46,7 @@ void	pruebas(int x_counter, int y_counter)
 	void	*mlx;
 	void	*mlx_win;
 	t_data	img;
-	int x_space = (SCREEN_WIDTH / 1.2) / x_counter;
+	int	x_space = (SCREEN_WIDTH / 1.2) / x_counter;
 	int y_space = (SCREEN_HEIGHT / 1.2) / y_counter;
 	int start_x = (SCREEN_WIDTH - x_space * x_counter) / 2;
 	int start_y = (SCREEN_HEIGHT - y_space * y_counter) / 2;
