@@ -100,30 +100,50 @@ static void	free_nmatrix(t_node **n_matrix, int y_counter)
 	free (n_matrix);
 }
 
+int	get_color(char *str, int i)
+{
+	char	*res;
+	int		j;
+	int		color;
+
+	i++;
+	j = i;
+	while (str[j])
+		j++;
+	res = (char *)ft_calloc(j - i + 1, sizeof(char));
+	j = 0;
+	while (str[i])
+	{
+		res[j] = str[i];
+		j++;
+		i++;
+	}
+	color = ft_atoi_base(res);
+	free(res);
+	return (color);
+}
+
 t_node	parse_line(char *temp, int a, int b)
 {
-	int	i;
+	int		i;
+	int		color;
 	t_node	*new;
 
 	i = 0;
+	color = 0;
 	new = ft_calloc(1, sizeof(new));
-	new->x = a;
-	new->y = b;
+	new->x = b;
+	new->y = a;
+	new->z = ft_atoi(temp);
 	while (temp[i] && temp[i] != ',')
 		i++;
-	if (!temp[i])
+	if (temp[i] == ',')
 	{
-		new->z = ft_atoi(temp);
-		new->color = 0;
+		color = get_color(temp, i);
+		new->color = color;
 	}
 	else
-	{
-		temp[i] = 0;
-		new->z = ft_atoi(temp);
-		i++;
-		temp = temp + i;
-		new->color = ft_hexatoi(temp);
-	}
+		new->color = color;
 	return (*new);
 }
 
@@ -174,7 +194,7 @@ int	main(int argc, char **argv)
 	matrix = matrix_allocation(y_counter, argv[1]);
 	x_counter = ft_count_words(matrix[0], 32);
 	n_matrix = massive_atoi(matrix, y_counter, x_counter);
-	//pruebas(x_counter, y_counter);
+	pruebas(x_counter, y_counter);
 	for (int i = 0; i < y_counter; i++)
 	{
 		for (int j = 0; j < x_counter; j++)

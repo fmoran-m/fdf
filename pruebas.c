@@ -57,5 +57,5 @@ void	pruebas(int x_counter, int y_counter)
 	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_length, &img.endian);
 	paint_image(img, MAIN_COLOR, x_counter, y_counter);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, start_x, start_y);
-	mlx_loop(mlx);
+	mlx_destroy_window(mlx, mlx_win);
 }
