@@ -3,8 +3,8 @@
 
 # include <math.h>
 # include "libft/libft.h"
-//# include "mlx/mlx.h" //Comentar en 42
-# include <mlx.h>   //Comentar en casa
+# include "mlx/mlx.h" //Comentar en 42
+//# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	720
 # define SCREEN_HEIGHT	480

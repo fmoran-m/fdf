@@ -32,13 +32,14 @@ static int	map_counter(char *argv)
 	counter = 0;
 	fd = open(argv, O_RDONLY);
 	temp = get_next_line(fd);
-	if (temp != 0)
-		counter++;
+	if (!temp)
+		return (0);
+	counter++;
 	while (temp != NULL)
 	{
 		free(temp);
 		temp = get_next_line(fd);
-		if (temp != 0)
+		if (temp != NULL)
 			counter++;
 	}
 	close (fd);
@@ -53,18 +54,18 @@ static char	**matrix_allocation(int y_counter, char *argv)
 	char	**matrix;
 
 	i = 0;
-	matrix = (char **) ft_calloc (y_counter + 1, sizeof(char *));
+	matrix = (char **)ft_calloc(y_counter + 1, sizeof(char *));
 	if (!matrix)
 		return (NULL);
 	fd = open(argv, O_RDONLY);
 	temp = get_next_line(fd);
-	if (temp != 0)
+	if (temp != NULL)
 		matrix[i] = temp;
 	i++;
 	while (temp != NULL)
 	{
 		temp = get_next_line(fd);
-		if (temp != 0)
+		if (temp != NULL)
 		{
 			matrix[i] = temp;
 			i++;
@@ -87,6 +88,7 @@ static void	free_matrix(char **matrix, int y_counter)
 	free (matrix);
 }
 
+
 static void	free_nmatrix(t_node **n_matrix, int y_counter)
 {
 	int	i;
@@ -100,13 +102,12 @@ static void	free_nmatrix(t_node **n_matrix, int y_counter)
 	free (n_matrix);
 }
 
-int	get_color(char *str, int i)
+static int	get_color(char *str, int i)
 {
 	char	*res;
 	int		j;
 	int		color;
 
-	i++;
 	j = i;
 	while (str[j])
 		j++;
@@ -127,24 +128,23 @@ t_node	parse_line(char *temp, int a, int b)
 {
 	int		i;
 	int		color;
-	t_node	*new;
+	t_node	new;
 
 	i = 0;
 	color = 0;
-	new = ft_calloc(1, sizeof(new));
-	new->x = b;
-	new->y = a;
-	new->z = ft_atoi(temp);
+	new.x = b;
+	new.y = a;
+	new.z = ft_atoi(temp);
 	while (temp[i] && temp[i] != ',')
 		i++;
 	if (temp[i] == ',')
 	{
+		i++;
 		color = get_color(temp, i);
-		new->color = color;
+		new.color = color;
 	}
-	else
-		new->color = color;
-	return (*new);
+	new.color = color;
+	return (new);
 }
 
 static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
@@ -156,7 +156,7 @@ static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
 	int			j;
 	int			i;
 
-	n_matrix = ft_calloc(y_counter + 1, sizeof(int *));
+	n_matrix = (t_node **)ft_calloc(y_counter + 1, sizeof(t_node *));
 	temp = NULL;
 	i = 0;
 	a = 0;
@@ -165,7 +165,7 @@ static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
 		temp = ft_split(matrix[i], 32);
 		j = 0;
 		b = 0;
-		n_matrix[a] =(t_node *)ft_calloc(x_counter + 1, sizeof(int));
+		n_matrix[a] =(t_node *)ft_calloc(x_counter + 1, sizeof(t_node));
 		while (temp[j])
 		{
 			n_matrix[a][b] = parse_line(temp[j], a, b);
@@ -191,10 +191,12 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 		return (-1);
 	y_counter = map_counter(argv[1]);
+	if (y_counter == 0)
+		return (0);
 	matrix = matrix_allocation(y_counter, argv[1]);
 	x_counter = ft_count_words(matrix[0], 32);
 	n_matrix = massive_atoi(matrix, y_counter, x_counter);
-	pruebas(x_counter, y_counter);
+//	pruebas(x_counter, y_counter);
 	for (int i = 0; i < y_counter; i++)
 	{
 		for (int j = 0; j < x_counter; j++)
