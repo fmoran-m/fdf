@@ -167,7 +167,7 @@ static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
 		n_matrix[a] =(t_node *)ft_calloc(x_counter + 1, sizeof(t_node));
 		while (temp[j])
 		{
-			n_matrix[a][b] = parse_line(temp[j], a + 1, b + 1);
+			n_matrix[a][b] = parse_line(temp[j], a, b);
 			b++;
 			j++;
 		}
@@ -196,14 +196,12 @@ int	main(int argc, char **argv)
 	x_counter = ft_count_words(matrix[0], 32);
 	n_matrix = massive_atoi(matrix, y_counter, x_counter);
 	free_matrix(matrix, y_counter); //Puede que leak en pasar y_counter
-	print_fdf(x_counter, y_counter, n_matrix);
-	/*
 	for (int i = 0; i < y_counter; i++)
 	{
 		for (int j = 0; j < x_counter; j++)
 			printf("x = %d, y = %d, z = %d, color = %d\n", n_matrix[i][j].x, n_matrix[i][j].y, n_matrix[i][j].z, n_matrix[i][j].color);
 	}
-	*/
+	print_fdf(x_counter, y_counter, n_matrix);
 	free_nmatrix(n_matrix, y_counter); //Puede que leak en y_counter
 	return 0;
 }
