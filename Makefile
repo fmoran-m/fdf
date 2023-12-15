@@ -4,9 +4,9 @@ LIBFT = ./libft/libft.a
 
 LIBFTDIR = ./libft
 
-CC = cc
+CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = 
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -14,7 +14,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c pruebas.c
+SRC = main.c print_fdf.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias

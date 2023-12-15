@@ -27,4 +27,5 @@ typedef	struct s_node
 } t_node;
 
 void	pruebas (int x_counter, int y_counter);
+void print_fdf(int x_counter, int y_counter, t_node **n_matrix);
 #endif
