@@ -133,8 +133,8 @@ t_node	parse_line(char *temp, int a, int b)
 	i = 0;
 	color = 0;
 	new.x = b + 1;
-	new.y = a + 1;
 	new.z = ft_atoi(temp);
+	new.y = (a - new.z) + 1;
 	while (temp[i] && temp[i] != ',')
 		i++;
 	if (temp[i] == ',')
@@ -203,6 +203,6 @@ int	main(int argc, char **argv)
 	}
 	print_fdf(x_counter, y_counter, n_matrix);
 	free_nmatrix(n_matrix, y_counter); //Puede que leak en y_counter
-	system("leaks -q fdf");
+//	system("leaks -q fdf");
 	return 0;
 }

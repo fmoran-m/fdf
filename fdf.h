@@ -6,8 +6,8 @@
 //# include "mlx/mlx.h" //Comentar en 42
 # include <mlx.h>   //Comentar en casa
 
-# define SCREEN_WIDTH	720
-# define SCREEN_HEIGHT	480
+# define SCREEN_WIDTH	1920
+# define SCREEN_HEIGHT	1080
 # define MAIN_COLOR	0x00FFFFFF
 
 typedef struct s_data
