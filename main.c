@@ -6,7 +6,7 @@ static int	ft_count_words(char const *s, unsigned char c)
 	int	i;
 	int n;
 
-	flag = 0;
+	flag = 1;
 	i = 0;
 	n = 0;
 	while (s[i])
@@ -132,8 +132,8 @@ t_node	parse_line(char *temp, int a, int b)
 
 	i = 0;
 	color = 0;
-	new.x = b;
-	new.y = a;
+	new.x = b + 1;
+	new.y = a + 1;
 	new.z = ft_atoi(temp);
 	while (temp[i] && temp[i] != ',')
 		i++;
@@ -186,7 +186,7 @@ int	main(int argc, char **argv)
 	t_node		**n_matrix;
 
 	y_counter = 0;
-	x_counter = 1;
+	x_counter = 0;
 	if (argc != 2)
 		return (-1);
 	y_counter = map_counter(argv[1]);
@@ -203,5 +203,6 @@ int	main(int argc, char **argv)
 	}
 	print_fdf(x_counter, y_counter, n_matrix);
 	free_nmatrix(n_matrix, y_counter); //Puede que leak en y_counter
+	system("leaks -q fdf");
 	return 0;
 }
