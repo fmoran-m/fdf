@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/19 17:20:21 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/19 18:02:07 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ static int	bid_y(t_node **n_matrix, int a, int b, int y_space)
 {
 	int	y;
 
-	y = n_matrix[a][b].y * y_space + 400;
+	y = n_matrix[a][b].y * y_space;
 	return (y);
 }
 
@@ -63,18 +63,18 @@ static void	paint_image(t_data img, t_node **n_matrix, int x_counter, int y_coun
 	int	new_x;
 	int	new_y;
 	int	x_space;
-	int	y_space;
+	//int	y_space;
 
 	a = 0;
 	x_space = (SCREEN_WIDTH / 5) / x_counter;
-	y_space = (SCREEN_HEIGHT / 5) / y_counter;
+	//y_space = (SCREEN_HEIGHT / 5) / y_counter;
 	while (a < y_counter)
 	{
 		b = 0;
 		while (b < x_counter)
 		{
 			old_x = bid_x(n_matrix, a, b, x_space);
-			old_y = bid_y(n_matrix, a, b, y_space);
+			old_y = bid_y(n_matrix, a, b, x_space);
 			new_x = rot_x(old_x, old_y);
 			new_y = rot_y(old_x, old_y); 
 			put_img_pixel(img, new_x, new_y, MAIN_COLOR); 
