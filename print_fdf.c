@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/18 20:00:37 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/19 17:20:21 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	rot_y(int old_x, int old_y)
 	double	theta = (30 * M_PI) / 180;
 	int	rotated_y;
 
-	rotated_y = (cos(theta) * old_x) + (sin(theta) * old_y);
+	rotated_y = (sin(theta) * old_x) + (cos(theta) * old_y);
 	return (rotated_y);
 }
 
