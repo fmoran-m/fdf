@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/20 19:14:56 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/20 20:54:29 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,12 +87,11 @@ static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 static void	paint_image(t_data img, t_node **nm, int x_counter, int y_counter)
 {
 	int	a0;
-	//int	a1;
+	int	a1;
 	int	b0;
 	int	b1;
-
 	a0 = 0;
-	//a1 = 1;
+	a1 = 1;
 	while (a0 < y_counter)
 	{
 		b0 = 0;
@@ -104,6 +103,20 @@ static void	paint_image(t_data img, t_node **nm, int x_counter, int y_counter)
 			b0++;
 		}
 		a0++;
+	}
+	b0 = 0;
+	b1 = 1;
+	while (b0 < x_counter)
+	{
+		a0 = 0;
+		a1 = 1;
+		while (a1 < y_counter)
+		{
+			bressen(img, nm[a0][b0].x, nm[a1][b0].x, nm[a0][b0].y, nm[a1][b0].y);
+			a1++;
+			a0++;
+		}
+		b0++;
 	}
 }
 
