@@ -135,6 +135,7 @@ t_node	parse_line(char *temp, int a, int b)
 	new.x = b + 1;
 	new.z = ft_atoi(temp);
 	new.y = (a - new.z) + 1;
+	//new.y = a + 1;
 	while (temp[i] && temp[i] != ',')
 		i++;
 	if (temp[i] == ',')

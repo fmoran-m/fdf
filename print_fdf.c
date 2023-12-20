@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/20 15:56:45 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/20 19:14:56 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,19 +38,19 @@ static int	bid_y(t_node **n_matrix, int a, int b, int x_space)
 
 static int	rot_x(int old_x, int old_y)
 {
-	double	theta = (45 * M_PI) / 180;
+	double	theta = (30 * M_PI) / 180;
 	int	rotated_x;
 
-	rotated_x = (cos(theta) * old_x) - (sin(theta) * old_y);
+	rotated_x = (old_x - old_y) * cos(theta);
 	return (rotated_x);
 }
 
-static int	rot_y(int old_x, int old_y)
+static int	rot_y(int old_x, int old_y, int z)
 {
-	double	theta = (45 * M_PI) / 180;
+	double	theta = (30 * M_PI) / 180;
 	int	rotated_y;
 
-	rotated_y = (sin(theta) * old_x) + (cos(theta) * old_y);
+	rotated_y = (old_x + old_y - 2 * z) * sin(theta);
 	return (rotated_y);
 }
 
@@ -74,7 +74,7 @@ static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 			old_x = bid_x(n_matrix, a, b, x_space);
 			old_y = bid_y(n_matrix, a, b, x_space);
 			new_x = rot_x(old_x, old_y);
-			new_y = rot_y(old_x, old_y); 
+			new_y = rot_y(old_x, old_y, n_matrix[a][b].z); 
 			n_matrix[a][b].x = new_x;
 			n_matrix[a][b].y = new_y;
 			b++;
