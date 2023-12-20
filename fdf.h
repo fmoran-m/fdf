@@ -27,5 +27,7 @@ typedef	struct s_node
 } t_node;
 
 void	pruebas (int x_counter, int y_counter);
-void print_fdf(int x_counter, int y_counter, t_node **n_matrix);
+void	print_fdf(int x_counter, int y_counter, t_node **n_matrix);
+void	bressen(t_data img, int x0, int x1, int y0, int y1);
+void	put_img_pixel(t_data img, int x, int y, int color);
 #endif

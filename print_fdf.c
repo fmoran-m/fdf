@@ -6,13 +6,13 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/19 18:02:07 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/20 00:55:01 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h" 
 
-static void	put_img_pixel(t_data img, int x, int y, int color)
+void	put_img_pixel(t_data img, int x, int y, int color)
 {
 	char	*pixel;
 
@@ -28,17 +28,17 @@ static int	bid_x(t_node **n_matrix, int a, int b, int x_space)
 	return (x);
 }
 
-static int	bid_y(t_node **n_matrix, int a, int b, int y_space)
+static int	bid_y(t_node **n_matrix, int a, int b, int x_space)
 {
 	int	y;
 
-	y = n_matrix[a][b].y * y_space;
+	y = n_matrix[a][b].y * x_space;
 	return (y);
 }
 
 static int	rot_x(int old_x, int old_y)
 {
-	double	theta = (30 * M_PI) / 180;
+	double	theta = (45 * M_PI) / 180;
 	int	rotated_x;
 
 	rotated_x = (cos(theta) * old_x) - (sin(theta) * old_y);
@@ -47,14 +47,14 @@ static int	rot_x(int old_x, int old_y)
 
 static int	rot_y(int old_x, int old_y)
 {
-	double	theta = (30 * M_PI) / 180;
+	double	theta = (45 * M_PI) / 180;
 	int	rotated_y;
 
 	rotated_y = (sin(theta) * old_x) + (cos(theta) * old_y);
 	return (rotated_y);
 }
 
-static void	paint_image(t_data img, t_node **n_matrix, int x_counter, int y_counter)
+static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 {
 	int	a;
 	int	b;
@@ -63,11 +63,9 @@ static void	paint_image(t_data img, t_node **n_matrix, int x_counter, int y_coun
 	int	new_x;
 	int	new_y;
 	int	x_space;
-	//int	y_space;
 
 	a = 0;
 	x_space = (SCREEN_WIDTH / 5) / x_counter;
-	//y_space = (SCREEN_HEIGHT / 5) / y_counter;
 	while (a < y_counter)
 	{
 		b = 0;
@@ -77,10 +75,35 @@ static void	paint_image(t_data img, t_node **n_matrix, int x_counter, int y_coun
 			old_y = bid_y(n_matrix, a, b, x_space);
 			new_x = rot_x(old_x, old_y);
 			new_y = rot_y(old_x, old_y); 
-			put_img_pixel(img, new_x, new_y, MAIN_COLOR); 
+			n_matrix[a][b].x = new_x;
+			n_matrix[a][b].y = new_y;
 			b++;
 		}
 		a++;
+	}
+	return (n_matrix);
+}
+
+static void	paint_image(t_data img, t_node **nm, int x_counter, int y_counter)
+{
+	int	a0;
+	//int	a1;
+	int	b0;
+	int	b1;
+
+	a0 = 0;
+	//a1 = 1;
+	while (a0 < y_counter)
+	{
+		b0 = 0;
+		b1 = 1;
+		while (b1 < x_counter)
+		{
+			bressen(img, nm[a0][b0].x, nm[a0][b1].x, nm[a0][b0].y, nm[a0][b1].y);
+			b1++;
+			b0++;
+		}
+		a0++;
 	}
 }
 
@@ -98,6 +121,7 @@ void	print_fdf(int x_counter, int y_counter, t_node **n_matrix)
 	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	img.img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_length, &img.endian);
+	n_matrix = rotate_image(n_matrix, x_counter, y_counter);
 	paint_image(img, n_matrix, x_counter, y_counter);
 	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
 	mlx_loop(mlx);
