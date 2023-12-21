@@ -124,18 +124,19 @@ static int	get_color(char *str, int i)
 	return (color);
 }
 
-t_node	parse_line(char *temp, int a, int b)
+t_node	parse_line(char *temp, int a, int b, int x_counter)
 {
 	int		i;
 	int		color;
+	int		x_space = (SCREEN_WIDTH / 5) / x_counter;
 	t_node	new;
 
 	i = 0;
 	color = 0;
-	new.x = b + 1;
-	new.z = ft_atoi(temp);
-	new.y = (a - new.z) + 1;
-	//new.y = a + 1;
+	new.x = b + 1; //Tal vez haya que sumar 1
+	new.z = ft_atoi(temp) * x_space;
+	new.y = a + 1; //Tal vez haya que sumar 1
+	//new.y = (a - new.z) + 1;
 	while (temp[i] && temp[i] != ',')
 		i++;
 	if (temp[i] == ',')
@@ -168,7 +169,7 @@ static t_node	**massive_atoi(char **matrix, int y_counter, int x_counter)
 		n_matrix[a] =(t_node *)ft_calloc(x_counter + 1, sizeof(t_node));
 		while (temp[j])
 		{
-			n_matrix[a][b] = parse_line(temp[j], a, b);
+			n_matrix[a][b] = parse_line(temp[j], a, b, x_counter);
 			b++;
 			j++;
 		}

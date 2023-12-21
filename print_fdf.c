@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/20 20:54:29 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2023/12/21 21:51:50 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,21 +36,21 @@ static int	bid_y(t_node **n_matrix, int a, int b, int x_space)
 	return (y);
 }
 
-static int	rot_x(int old_x, int old_y)
+static int	rot_x(int x, int y)
 {
 	double	theta = (30 * M_PI) / 180;
 	int	rotated_x;
 
-	rotated_x = (old_x - old_y) * cos(theta);
+	rotated_x = (x - y) * cos(theta); 
 	return (rotated_x);
 }
 
-static int	rot_y(int old_x, int old_y, int z)
+static int	rot_y(int x, int y, int z)
 {
 	double	theta = (30 * M_PI) / 180;
 	int	rotated_y;
 
-	rotated_y = (old_x + old_y - 2 * z) * sin(theta);
+	rotated_y = (x + y - 2 * z) * sin(theta);
 	return (rotated_y);
 }
 
