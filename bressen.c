@@ -1,5 +1,4 @@
 #include "fdf.h"
-
 void	bressen(t_data img, int x0, int x1, int y0, int y1)
 {
 	int	dx = x1 - x0;
@@ -12,20 +11,20 @@ void	bressen(t_data img, int x0, int x1, int y0, int y1)
 	int	temp;
 
 	temp = 0;
-	if (dx < 0)
+	if (dx >= 0)
+		sx = 1;
+	else
 	{
 		sx = -1;
 		dx = -dx;
 	}
-	else if (dx > 0)
-		sx = 1;
-	if (dy < 0)
+	if (dy >= 0)
+		sy = 1;
+	else
 	{
 		sy = -1;
 		dy = -dy;
 	}
-	else if (dy > 0)
-		sy = 1;
 	if (dy > dx)
 	{
 		dy = temp;
