@@ -6,7 +6,7 @@
 /*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/31 00:57:57 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/02 18:11:00 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,58 +88,13 @@ static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 	return (n_matrix);
 }
 
-static void	paint_image(t_data img, t_node **nm, int x_counter, int y_counter)
+static void	paint_image(t_data img, t_node **nm, int x_counter, int y)
 {
-	int	a0;
-	int	a1;
-	int	b0;
-	int	b1;
-	a0 = 0;
-	a1 = 1;
-	while (a0 < y_counter)
-	{
-		b0 = 0;
-		b1 = 1;
-		while (b1 < x_counter)
-		{
-			bressen(img, nm[a0][b0].x, nm[a0][b1].x, nm[a0][b0].y, nm[a0][b1].y);
-			b1++;
-			b0++;
-		}
-		a0++;
-	}
-	b0 = 0;
-	b1 = 1;
-	while (b0 < x_counter)
-	{
-		a0 = 0;
-		a1 = 1;
-		while (a1 < y_counter)
-		{
-			bressen(img, nm[a0][b0].x, nm[a1][b0].x, nm[a0][b0].y, nm[a1][b0].y);
-			a1++;
-			a0++;
-		}
-		b0++;
-	}
-}
+	int	x;
 
-void	print_fdf(int x_counter, int y_counter, t_node **n_matrix)
-{
-	void	*mlx;
-	void	*mlx_win;
-	t_data	img;
-//	int x_space = (SCREEN_WIDTH / 1.2) / x_counter;
-//	int y_space = (SCREEN_HEIGHT / 1.2) / y_counter;
-//	int start_x = (SCREEN_WIDTH - x_space * x_counter) / 2;
-///	int start_y = (SCREEN_HEIGHT - y_space * y_counter) / 2;
-
-	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
-	img.img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	img.addr = mlx_get_data_addr(img.img, &img.bbp, &img.line_length, &img.endian);
-	n_matrix = rotate_image(n_matrix, x_counter, y_counter);
-	paint_image(img, n_matrix, x_counter, y_counter);
-	mlx_put_image_to_window(mlx, mlx_win, img.img, 0, 0);
-	mlx_loop(mlx);
+	x = 0;
+	while (x < x_counter)
+	{
+		
+	}
 }

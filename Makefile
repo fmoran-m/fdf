@@ -14,7 +14,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c
+SRC = main.c print_fdf.c bressen.c rows_counter.c free_matrix.c free_nmatrix.c count_words.c parse_line.c get_map_line.c fdf_map.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias
