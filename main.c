@@ -15,18 +15,16 @@ int	main(int argc, char **argv)
 	if (!matrix)
 		return (-1);
 	matrix = fdf_map(matrix, argv[1], y_counter);
+	if (!matrix)
+		return (-1);
 	/*
-	x_counter = count_words(matrix[0], ' ');
-	n_matrix = massive_atoi(matrix, y_counter, x_counter);
-	free_matrix(matrix, y_counter); //Puede que leak en pasar y_counter
 	for (int i = 0; i < y_counter; i++)
 	{
 		for (int j = 0; j < x_counter; j++)
-			printf("x = %d, y = %d, z = %d, color = %d\n", n_matrix[i][j].x, n_matrix[i][j].y, n_matrix[i][j].z, n_matrix[i][j].color);
+			printf("x = %d, y = %d, z = %d, color = %d\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z, matrix[i][j].color);
 	}
-	print_fdf(x_counter, y_counter, n_matrix);
-	free_nmatrix(n_matrix, y_counter); //Puede que leak en y_counter
+	*/
+	free_nmatrix(matrix, y_counter); //Puede que leak en y_counter
 //	system("leaks -q fdf");
-*/
 	return (0);
 }

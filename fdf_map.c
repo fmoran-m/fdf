@@ -14,32 +14,19 @@ t_node	**fdf_map(t_node **matrix, char *argv, int y_counter)
 		return (NULL);
 	x_counter = count_words(line, ' ');
 	graphic.mlx = mlx_init();
-	graphic.mlx_win = mlx_new_window(mlx, SCREEN_WIDTH, SCREEN_WIDTH, "FDF");
-	graphic.img.img = mlx_new_image(mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	graphic.mlx_win = mlx_new_window(graphic.mlx, SCREEN_WIDTH, SCREEN_WIDTH, "FDF");
+	graphic.img.img = mlx_new_image(graphic.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	graphic.img.addr = mlx_get_data_addr(graphic.img.img, &graphic.img.bbp, &graphic.img.line_length, &graphic.img.endian);
-	mlx_loop(graphic.mlx);
+	y = 0;
 	while (y < y_counter)
 	{
 		matrix[y] =	get_map_line(matrix[y], line, x_counter, y);
 		paint_image(graphic.img, matrix, y, x_counter);
+		mlx_put_image_to_window(graphic.mlx, graphic.mlx_win, graphic.img.img, 0, 0);
 		line = get_next_line(fd);
 		y++;
 	}
-	return (matrix);
-}
-	/*
-	matrix[i] = get_map_line(matrix[i], line, x_counter, y);
-	while (line != NULL)
-	{
-		line = get_next_line(fd);
-		if (line != NULL)
-		{
-			matrix[i] = get_map_line(matrix[i], line, x_counter, y);
-			y++;
-			i++;
-		}
-	}
+	mlx_loop(graphic.mlx);
 	close(fd);
 	return (matrix);
 }
-*/

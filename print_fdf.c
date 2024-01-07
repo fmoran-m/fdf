@@ -19,7 +19,7 @@ void	put_img_pixel(t_data img, int x, int y, int color)
 	pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x));
 	*(unsigned int*) pixel = color;
 }
-
+/*
 static int	bid_x(t_node **n_matrix, int a, int b, int x_space)
 {
 	int	x;
@@ -87,14 +87,18 @@ static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 	}
 	return (n_matrix);
 }
-
-static void	paint_image(t_data img, t_node **nm, int x_counter, int y)
+*/
+void	paint_image(t_data img, t_node **nm, int x_counter, int y)
 {
-	int	x;
+	int	x0;
+	int	x1;
 
-	x = 0;
-	while (x < x_counter)
+	x0 = 0;
+	x1 = 1;
+	while (x1 < x_counter)
 	{
-		
+		bressen(img, nm[y][x0].x, nm[y][x1].x, nm[y][x0].y, nm[y][x1].y);
+		x0++;
+		x1++;
 	}
 }
