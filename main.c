@@ -2,15 +2,17 @@
 
 int	main(int argc, char **argv)
 {
-	int			y_counter;
 	t_node		**matrix;
+	t_mlx		graphic;
+	int			y_counter;
 
 	y_counter = 0;
 	if (argc != 2)
 		return (-1);
+	graphic = graphic_init();
 	y_counter = rows_counter(argv[1]);
 	if (y_counter == 0)
-		return (0);
+		return (-1);
 	matrix = (t_node **)ft_calloc(y_counter + 1, sizeof(t_node *));
 	if (!matrix)
 		return (-1);
