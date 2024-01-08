@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   print_fdf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/01/02 18:11:00 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/08 08:53:56 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,5 +100,14 @@ void	paint_image(t_data img, t_node **nm, int x_counter, int y)
 		bressen(img, nm[y][x0].x, nm[y][x1].x, nm[y][x0].y, nm[y][x1].y);
 		x0++;
 		x1++;
+	}
+	x0 = 0;
+	if (y > 0)
+	{
+		while (x0 < x_counter)
+		{
+			bressen(img, nm[y][x0].x, nm[y - 1][x0].x, nm[y][x0].y, nm[y - 1][x0].y);
+			x0++;
+		}
 	}
 }

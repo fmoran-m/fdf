@@ -21,7 +21,7 @@ t_node	**fdf_map(t_node **matrix, char *argv, int y_counter)
 	while (y < y_counter)
 	{
 		matrix[y] =	get_map_line(matrix[y], line, x_counter, y);
-		paint_image(graphic.img, matrix, y, x_counter);
+		paint_image(graphic.img, matrix, x_counter, y);
 		mlx_put_image_to_window(graphic.mlx, graphic.mlx_win, graphic.img.img, 0, 0);
 		line = get_next_line(fd);
 		y++;
