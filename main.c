@@ -3,21 +3,20 @@
 int	main(int argc, char **argv)
 {
 	t_node		**matrix;
-	t_mlx		graphic;
-	int			y_counter;
+	t_loop		loop;
 
-	y_counter = 0;
+	loop.y_counter = 0;
 	if (argc != 2)
 		return (-1);
-	graphic = graphic_init();
-	y_counter = rows_counter(argv[1]);
-	if (y_counter == 0)
+	loop.graphic = graphic_init();
+	loop.y_counter = rows_counter(argv[1]);
+	if (loop.y_counter == 0)
 		return (-1);
-	matrix = (t_node **)ft_calloc(y_counter + 1, sizeof(t_node *));
-	if (!matrix)
+	loop.matrix = (t_node **)ft_calloc(loop.y_counter + 1, sizeof(t_node *));
+	if (!loop.matrix)
 		return (-1);
-	matrix = fdf_map(matrix, argv[1], y_counter, graphic);
-	if (!matrix)
+	loop.matrix = fdf_map(argv[1], loop);
+	if (!loop.matrix)
 		return (-1);
 	/*
 	for (int i = 0; i < y_counter; i++)
@@ -26,7 +25,7 @@ int	main(int argc, char **argv)
 			printf("x = %d, y = %d, z = %d, color = %d\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z, matrix[i][j].color);
 	}
 	*/
-	free_nmatrix(matrix, y_counter); //Puede que leak en y_counter
+	free_nmatrix(loop.matrix, loop.y_counter); //Puede que leak en y_counter
 //	system("leaks -q fdf");
 	return (0);
 }
