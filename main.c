@@ -16,7 +16,7 @@ int	main(int argc, char **argv)
 	matrix = (t_node **)ft_calloc(y_counter + 1, sizeof(t_node *));
 	if (!matrix)
 		return (-1);
-	matrix = fdf_map(matrix, argv[1], y_counter);
+	matrix = fdf_map(matrix, argv[1], y_counter, graphic);
 	if (!matrix)
 		return (-1);
 	/*

@@ -14,9 +14,9 @@ typedef struct s_data
 {
 	void	*img;
 	char	*addr;
-	int	bbp;
-	int	line_length;
-	int	endian;
+	int		bbp;
+	int		line_length;
+	int		endian;
 } t_data;
 typedef	struct s_node
 {
@@ -31,6 +31,12 @@ typedef struct s_mlx
 	void	*mlx_win;
 	t_data	img;
 } t_mlx;
+typedef struct s_loop
+{
+	int	x_counter;
+	int	y;
+	t_mlx graphic;
+}
 
 void	print_fdf(int x_counter, int y_counter, t_node **n_matrix, t_mlx graphic);
 void	bressen(t_data img, int x0, int x1, int y0, int y1);
