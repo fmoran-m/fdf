@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/01/08 12:02:34 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/09 09:03:20 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,25 +88,25 @@ static t_node	**rotate_image(t_node **n_matrix, int x_counter, int y_counter)
 	return (n_matrix);
 }
 */
-void	paint_image(t_data img, t_node **nm, int x_counter, int y)
+void	paint_image(t_loop loop)
 {
 	int	x0;
 	int	x1;
 
 	x0 = 0;
 	x1 = 1;
-	while (x1 < x_counter)
+	while (x1 < loop.x_counter)
 	{
-		bressen(img, nm[y][x0].x, nm[y][x1].x, nm[y][x0].y, nm[y][x1].y);
+		bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y][x1].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y][x1].y);
 		x0++;
 		x1++;
 	}
 	x0 = 0;
-	if (y > 0)
+	if (loop.y > 0)
 	{
-		while (x0 < x_counter)
+		while (x0 < loop.x_counter)
 		{
-			bressen(img, nm[y][x0].x, nm[y - 1][x0].x, nm[y][x0].y, nm[y - 1][x0].y);
+			bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y - 1][x0].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y - 1][x0].y);
 			x0++;
 		}
 	}

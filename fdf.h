@@ -47,7 +47,7 @@ void	free_matrix(char **matrix, int y_counter);
 void	free_nmatrix(t_node **n_matrix, int y_counter);
 int		rows_counter(char *argv);
 int		count_words(char const *s, unsigned char c);
-void	paint_image(t_data img, t_node **nm, int x_counter, int y);
+void	paint_image(t_loop loop);
 t_node	parse_line(char *temp, int a, int b, int x_counter);
 t_node	**fdf_map(char *argv, t_loop loop);
 t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y);
