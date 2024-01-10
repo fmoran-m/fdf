@@ -41,7 +41,7 @@ typedef struct s_loop
 } t_loop;
 
 void	print_fdf(int x_counter, int y_counter, t_node **n_matrix, t_mlx graphic);
-void	bressen(t_data img, int x0, int x1, int y0, int y1);
+void	bressen(t_data img, int x0, int x1, int y0, int y1, int color, int color2);
 void	put_img_pixel(t_data img, int x, int y, int color);
 void	free_matrix(char **matrix, int y_counter);
 void	free_nmatrix(t_node **n_matrix, int y_counter);

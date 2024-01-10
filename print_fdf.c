@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/01/09 09:03:20 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/10 22:06:30 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	paint_image(t_loop loop)
 	x1 = 1;
 	while (x1 < loop.x_counter)
 	{
-		bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y][x1].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y][x1].y);
+		bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y][x1].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y][x1].y, loop.matrix[loop.y][x0].color, loop.matrix[loop.y][x1].color);
 		x0++;
 		x1++;
 	}
@@ -106,7 +106,7 @@ void	paint_image(t_loop loop)
 	{
 		while (x0 < loop.x_counter)
 		{
-			bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y - 1][x0].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y - 1][x0].y);
+			bressen(loop.graphic.img, loop.matrix[loop.y][x0].x, loop.matrix[loop.y - 1][x0].x, loop.matrix[loop.y][x0].y, loop.matrix[loop.y - 1][x0].y, loop.matrix[loop.y][x0].color, loop.matrix[loop.y][x1].color);
 			x0++;
 		}
 	}
