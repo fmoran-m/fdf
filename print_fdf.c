@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/01/10 22:06:30 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/12 04:35:10 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	put_img_pixel(t_data img, int x, int y, int color)
 {
 	char	*pixel;
 
+	if (!color)
+		color = MAIN_COLOR;
 	pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x));
 	*(unsigned int*) pixel = color;
 }
