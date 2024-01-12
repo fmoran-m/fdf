@@ -36,21 +36,21 @@ static t_node	rotate_node(t_node new)
 	return (new);
 }
 
-static t_node	iso_node(t_node new)
+static t_node	iso_node(t_node new, int x_counter, int y_counter)
 {
 	int		x;
 	int		y;
 	double	theta;
 
 	theta = (30 * M_PI) / 180;
-	x = (new.x * cos(theta)) - (new.y * cos(theta)) + 500;
-	y = ((new.x * sin(theta)) + (new.y * sin(theta)) - new.z) + 400;
+	x = (new.x * cos(theta)) - (new.y * cos(theta)) + ((SCREEN_WIDTH / 2) - (x_counter / 2));
+	y = ((new.x * sin(theta)) + (new.y * sin(theta)) - new.z) + ((SCREEN_HEIGHT / 2) - (y_counter / 2));
 	new.x = x;
 	new.y = y;
 	return (new);
 }
 
-t_node	parse_line(char *temp, int x, int y, int x_counter)
+t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter)
 {
 	int		i;
 	int		color;
@@ -72,7 +72,7 @@ t_node	parse_line(char *temp, int x, int y, int x_counter)
 	}
 	new.color = color;
 	new = rotate_node(new);
-	new = iso_node(new);
+	new = iso_node(new, x_counter, y_counter);
 	printf("%d, %d\n", new.x, new.y);
 	return (new);
 }
