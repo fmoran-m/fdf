@@ -18,7 +18,6 @@ static double	get_color_step(int color1, int color2, int dx, int dy)
 		color_step = (color2 - color1) / total;
 	else
 		color_step = 0;
-	printf("%d\n", total);
 	return (color_step);
 }
 

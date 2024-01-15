@@ -2,7 +2,6 @@
 
 int	main(int argc, char **argv)
 {
-	t_node		**matrix;
 	t_loop		loop;
 
 	loop.y_counter = 0;

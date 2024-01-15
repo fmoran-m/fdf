@@ -50,7 +50,7 @@ static t_node	iso_node(t_node new, int x_counter, int y_counter)
 	return (new);
 }
 
-t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *max_x, int *max_y)
+t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *max_x, int *max_y, int *min_x, int *min_y)
 {
 	int		i;
 	int		color;
@@ -58,7 +58,7 @@ t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *m
 	t_node	new;
 
 	//x_space = SCREEN_WIDTH / x_counter;
-	x_space = 1;
+	x_space = 15; 
 	i = 0;
 	color = 0;
 	new.x = x * x_space;
@@ -78,6 +78,9 @@ t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *m
 		*max_x = new.x;	
 	if (new.y > (*max_y))
 		*max_y = new.y;
-//	printf("%d, %d\n", new.x, new.y);
+	if (new.x < (*min_x))
+		*min_x = new.x;
+	if (new.y < (*min_y))
+		*min_y = new.y;
 	return (new);
 }

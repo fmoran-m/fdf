@@ -3,8 +3,8 @@
 
 # include <math.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h" //Comentar en 42
-//# include <mlx.h>   //Comentar en casa
+//# include "mlx/mlx.h" //Comentar en 42
+# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
@@ -48,8 +48,8 @@ void	free_nmatrix(t_node **n_matrix, int y_counter);
 int		rows_counter(char *argv);
 int		count_words(char const *s, unsigned char c);
 void	paint_image(t_loop loop);
-t_node	parse_line(char *temp, int a, int b, int x_counter, int y_counter, int *max_x, int *max_y);
+t_node	parse_line(char *temp, int a, int b, int x_counter, int y_counter, int *max_x, int *max_y, int *min_x, int *min_y);
 t_node	**fdf_map(char *argv, t_loop loop);
-t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y, int y_counter, int *max_x,int *max_y);
+t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y, int y_counter, int *max_x,int *max_y, int *min_x, int *min_y);
 t_mlx 	graphic_init(void);
 #endif
