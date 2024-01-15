@@ -57,8 +57,7 @@ t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *m
 	int		x_space;
 	t_node	new;
 
-	//x_space = SCREEN_WIDTH / x_counter;
-	x_space = 15; 
+	x_space = (float)(SCREEN_WIDTH / 2) / (float)x_counter;
 	i = 0;
 	color = 0;
 	new.x = x * x_space;
