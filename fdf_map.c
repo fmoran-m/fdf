@@ -1,24 +1,5 @@
 #include "fdf.h"
 
-static t_node	*normalize_line(t_node *matrix, int x_counter, int max_x, int min_x, int max_y, int min_y) //Debo controlar todas la direcciones
-{
-	int	new_origin_x;
-	int	new_origin_y;
-	int	i;
-
-	new_origin_x = (max_x - min_x) / 2;
-	new_origin_y = (max_y - min_y) / 2;
-	//new_origin_y = 0;
-	i = 0;
-	while (i < x_counter)
-	{
-		matrix[i].x -= new_origin_x;
-		matrix[i].y += new_origin_y;
-		i++;
-	}
-	return (matrix);
-}
-
 t_node	**fdf_map(char *argv, t_loop loop)
 {
 	int			fd;
@@ -47,7 +28,6 @@ t_node	**fdf_map(char *argv, t_loop loop)
 	loop.y = 0;
 	while (loop.y < loop.y_counter)
 	{
-		loop.matrix[loop.y] = normalize_line(loop.matrix[loop.y], loop.x_counter, max_x, min_x, max_y, min_y);
 		paint_image(loop);
 		mlx_put_image_to_window(loop.graphic.mlx, loop.graphic.mlx_win, loop.graphic.img.img, 0, 0);
 		loop.y++;

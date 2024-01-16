@@ -18,8 +18,11 @@ void	put_img_pixel(t_data img, int x, int y, int color)
 
 	if (!color)
 		color = MAIN_COLOR;
-	pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x));
-	*(unsigned int*) pixel = color;
+	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
+	{
+		pixel = img.addr + ((img.line_length * y) + ((img.bbp / 8) * x));
+		*(unsigned int*) pixel = color;
+	}
 }
 /*
 static int	bid_x(t_node **n_matrix, int a, int b, int x_space)
