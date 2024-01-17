@@ -25,6 +25,8 @@ t_node	**fdf_map(char *argv, t_loop loop)
 		line = get_next_line(fd);
 		loop.y++;
 	}
+	printf("Max_x = %d, Max_y = %d\n", max_x, max_y);
+	printf("Min_x = %d, Min_y = %d\n", min_x, min_y);
 	loop.y = 0;
 	while (loop.y < loop.y_counter)
 	{
@@ -32,8 +34,6 @@ t_node	**fdf_map(char *argv, t_loop loop)
 		mlx_put_image_to_window(loop.graphic.mlx, loop.graphic.mlx_win, loop.graphic.img.img, 0, 0);
 		loop.y++;
 	}
-	printf("Max_x = %d, Max_y = %d\n", max_x, max_y);
-	printf("Min_x = %d, Min_y = %d\n", min_x, min_y);
 	mlx_loop(loop.graphic.mlx);
 	close(fd);
 	return (loop.matrix);
