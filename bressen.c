@@ -21,40 +21,42 @@ static double	get_color_step(int color1, int color2, int dx, int dy)
 	return (color_step);
 }
 
-void	bressen(t_data img, int x0, int x1, int y0, int y1, int color1, int color2)
+void bressen(t_data img, int x0, int x1, int y0, int y1, int color1, int color2)
 {
     int dx = abs(x1 - x0);
     int dy = abs(y1 - y0);
+	int err_x, err_y;
     int sx, sy;
-	double color_step;
-	double color;
+    double color_step = get_color_step(color1, color2, dx, dy);
+    double color = color1;
 
-	color_step = get_color_step(color1, color2, dx, dy);
-	color = color1;
     if (x0 < x1) 
         sx = 1;
     else 
         sx = -1;
     if (y0 < y1) 
         sy = 1;
-     else 
+    else 
+	{
         sy = -1;
-    int err = dx - dy;
-    while (x0 != x1 || y0 != y1)
+	}
+	err_x = 0;
+	err_y = 0;
+	while (x0 != x1 || y0 != y1)
 	{
 		put_img_pixel(img, x0, y0, color);
 		color += color_step;
-        int err2 = 2 * err;
-
-        if (err2 > -dy)
+		err_x += dx;
+		if (err_x >= dy)
 		{
-			err -= dy;
+			err_x -= dy;
 			x0 += sx;
-        }
-        if (err2 < dx)
+		}
+		err_y += dy;
+		if (err_y >= dx)
 		{
-            err += dx;
-            y0 += sy;
-        }
-    }
+			err_y -= dx;
+			y0 += sy;
+		}
+	}
 }
