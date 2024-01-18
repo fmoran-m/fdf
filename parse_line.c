@@ -36,7 +36,7 @@ static t_node	rotate_node(t_node new)
 	return (new);
 }
 
-static t_node	iso_node(t_node new, int x_counter, int y_counter)
+static t_node	iso_node(t_node new)
 {
 	int		x;
 	int		y;
@@ -89,7 +89,7 @@ t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *m
 	}
 	new.color = color;
 	new = rotate_node(new);
-	new = iso_node(new, x_counter, y_counter);
+	new = iso_node(new);
 	new.x += SCREEN_WIDTH / 2;
 	new.y += (SCREEN_HEIGHT + y_counter * (x_space / 2)) / 2;
 	if (new.x > (*max_x))

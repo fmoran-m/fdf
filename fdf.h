@@ -52,4 +52,5 @@ t_node	parse_line(char *temp, int a, int b, int x_counter, int y_counter, int *m
 t_node	**fdf_map(char *argv, t_loop loop);
 t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y, int y_counter, int *max_x,int *max_y, int *min_x, int *min_y);
 t_mlx 	graphic_init(void);
+void	inputs(t_loop *loop);
 #endif

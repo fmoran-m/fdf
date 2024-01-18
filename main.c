@@ -17,6 +17,7 @@ int	main(int argc, char **argv)
 	loop.matrix = fdf_map(argv[1], loop);
 	if (!loop.matrix)
 		return (-1);
+	inputs(&loop);
 	free_nmatrix(loop.matrix, loop.y_counter); //Puede que leak en y_counter
 	return (0);
 }

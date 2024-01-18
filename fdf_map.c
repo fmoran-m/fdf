@@ -34,6 +34,7 @@ t_node	**fdf_map(char *argv, t_loop loop)
 		mlx_put_image_to_window(loop.graphic.mlx, loop.graphic.mlx_win, loop.graphic.img.img, 0, 0);
 		loop.y++;
 	}
+	inputs(&loop);
 	mlx_loop(loop.graphic.mlx);
 	close(fd);
 	return (loop.matrix);
