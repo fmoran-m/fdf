@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 17:18:14 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/01/15 00:58:09 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/22 15:51:03 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	put_img_pixel(t_data img, int x, int y, int color)
 		*(unsigned int*) pixel = color;
 	}
 }
-
 
 void	paint_image(t_loop loop)
 {

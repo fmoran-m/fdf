@@ -22,7 +22,7 @@ static int	get_color(char *str, int i)
 	return (color);
 }
 
-t_node	parse_line(char *temp, int x, int y, t_map **map)
+t_node	parse_line(char *temp, int x, int y, t_map *map)
 {
 	int		i;
 	int		color;

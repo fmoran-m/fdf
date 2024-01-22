@@ -3,8 +3,8 @@
 
 # include <math.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h" //Comentar en 42
-//# include <mlx.h>   //Comentar en casa
+//# include "mlx/mlx.h" //Comentar en 42
+# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
@@ -19,6 +19,16 @@ typedef struct s_data
 	int		endian;
 } t_data;
 */
+typedef	struct s_trans
+{
+	int	scale;
+	int	z_scale;
+	int	x_pos;
+	int	y_pos;
+	int	x_rot;
+	int	y_rot;
+	int	z_rot;
+} t_trans;
 typedef struct s_map
 {
 	int	width;
@@ -47,27 +57,21 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 } t_mlx;
-/*
-typedef struct s_loop
-{
-	int	x_counter;
-	int	y_counter;
-	int	y;
-	t_mlx graphic;
-	t_node **matrix;
-} t_loop;
-*/
 void	print_fdf(int x_counter, int y_counter, t_node **n_matrix, t_mlx graphic);
-void	bressen(t_data img, int x0, int x1, int y0, int y1, int color, int color2);
 void	put_img_pixel(t_data img, int x, int y, int color);
 void	free_matrix(char **matrix, int y_counter);
 void	free_nmatrix(t_node **n_matrix, int y_counter);
 int		rows_counter(char *argv);
 int		count_words(char const *s, unsigned char c);
-void	paint_image(t_loop loop);
-t_node	parse_line(char *temp, int a, int b, int x_counter, int y_counter, int *max_x, int *max_y, int *min_x, int *min_y);
-t_node	**fdf_map(char *argv, t_loop loop);
-t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y, int y_counter, int *max_x,int *max_y, int *min_x, int *min_y);
-t_mlx 	graphic_init(void);
-void	inputs(t_loop *loop);
+t_node	parse_line(char *temp, int x, int y, t_map *map);
+t_node	**parse_map(char *argv, t_node **matrix, t_map *map, t_mlx *mlx);
+t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
+t_mlx 	*graphic_init(void);
+t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
+void    (t_node **matrix, t_mlx *mlx, t_map *mlx);
+void	map_init(t_map *map);
+void	draw_map(t_node **matrix, t_mlx *mlx, t_map *map, t_trans *trans);
+void    init_trans(t_trans *trans);
+void	bressen(t_node node1, t_node node2, t_mlx *mlx);
+void	draw_line(t_node *matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 #endif

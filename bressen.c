@@ -41,7 +41,7 @@ int	get_color(int x0, int y0, int x1, int y1, int x, int y, int dx, int dy, int 
 }
 
 
-void bressen(t_data img, int x0, int x1, int y0, int y1, int color1, int color2)
+void bressen(t_data *mlx, t_node *matrix, int i)
 {
     int dx = abs(x1 - x0);
     int dy = abs(y1 - y0);

@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-void	map_init(t_map **map)
+void	map_init(t_map *map)
 {
 	map->width = 0;
 	map->height = 0;

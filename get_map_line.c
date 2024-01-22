@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-t_node	*get_map_line(t_node *matrix, char *line, t_map **map, int y)
+t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 {
 	char		**temp;
 	int			x;
