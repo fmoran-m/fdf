@@ -9,7 +9,7 @@
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
 # define MAIN_COLOR	0x00FFFFFF
-
+/*
 typedef struct s_data
 {
 	void	*img;
@@ -18,6 +18,18 @@ typedef struct s_data
 	int		line_length;
 	int		endian;
 } t_data;
+*/
+typedef struct s_map
+{
+	int	width;
+	int	height;
+	int	max_x;
+	int	min_x;
+	int	max_y;
+	int	min_y;
+	int	max_z;
+	int	min_z;	
+} t_map;
 typedef	struct s_node
 {
 	int	x;
@@ -29,8 +41,13 @@ typedef struct s_mlx
 {
 	void	*mlx;
 	void	*mlx_win;
-	t_data	img;
+	void	*img;
+	char	*addr;
+	int		bbp;
+	int		line_length;
+	int		endian;
 } t_mlx;
+/*
 typedef struct s_loop
 {
 	int	x_counter;
@@ -39,7 +56,7 @@ typedef struct s_loop
 	t_mlx graphic;
 	t_node **matrix;
 } t_loop;
-
+*/
 void	print_fdf(int x_counter, int y_counter, t_node **n_matrix, t_mlx graphic);
 void	bressen(t_data img, int x0, int x1, int y0, int y1, int color, int color2);
 void	put_img_pixel(t_data img, int x, int y, int color);

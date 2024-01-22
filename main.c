@@ -2,22 +2,27 @@
 
 int	main(int argc, char **argv)
 {
-	t_loop		loop;
+	t_map	*map;
+	t_mlx	*mlx;
+	t_node	**matrix;
 
-	loop.y_counter = 0;
 	if (argc != 2)
+		return (-1); //Control de error con perror o strerror
+	//Strcmp con el .fdf para comprobar si es correcto
+	mlx = graphic_init();
+	map_init(&map);
+	map->height = rows_counter(argv[1]);
+	if (!map->height)
+		return (-1); //Control de errores, error de lectura (Puede hacerse exit)
+	matrix = (t_node **)ft_calloc(loop.y_counter + 1, sizeof(t_node *));
+	if (!loop.matrix) //Control de errores 
 		return (-1);
-	loop.graphic = graphic_init();
-	loop.y_counter = rows_counter(argv[1]);
-	if (loop.y_counter == 0)
-		return (-1);
-	loop.matrix = (t_node **)ft_calloc(loop.y_counter + 1, sizeof(t_node *));
+	matrix = fdf_map(argv[1], matrix, map, mlx);
+	//print_image
+	//inputs();
+	//mlx_loop(mlx);
 	if (!loop.matrix)
 		return (-1);
-	loop.matrix = fdf_map(argv[1], loop);
-	if (!loop.matrix)
-		return (-1);
-	inputs(&loop);
 	free_nmatrix(loop.matrix, loop.y_counter); //Puede que leak en y_counter
 	return (0);
 }

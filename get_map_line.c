@@ -1,18 +1,22 @@
 #include "fdf.h"
 
-t_node	*get_map_line(t_node *matrix, char *line, int x_counter, int y, int y_counter, int *max_x, int *max_y, int *min_x, int *min_y)
+t_node	*get_map_line(t_node *matrix, char *line, t_map **map, int y)
 {
 	char		**temp;
-	int			i;
+	int			x;
 
-	i = 0;
+	x = 0;
 	temp = ft_split(line, ' ');
-	matrix = (t_node *)ft_calloc(x_counter + 1, sizeof(t_node));
-	while (temp[i])
+	if (!temp)
+		return (-1); //Controlamos errores
+	matrix = (t_node *)ft_calloc(map->height + 1, sizeof(t_node));
+	if (!matrix)
+		return (-1) //Controlamos errores
+	while (temp[x])
 	{
-		matrix[i] = parse_line(temp[i], i, y, x_counter, y_counter, max_x, max_y, min_x, min_y);
-		i++;
+		matrix[x] = parse_line(temp[x], x, y, map);
+		x++;
 	}
-	free_matrix(temp, x_counter);
+	free_matrix(temp, map->height);
 	return (matrix);
 }
