@@ -55,8 +55,8 @@ static int ft_min(int x_counter, int y_counter)
 	int x;
 	int y; 
 
-	x = SCREEN_WIDTH / x_counter / 3;
-	y = SCREEN_HEIGHT / y_counter / 3;
+	x = SCREEN_WIDTH / x_counter / 1;
+	y = SCREEN_HEIGHT / y_counter / 1;
 	if (x < y)
 		return (x);
 	else
@@ -76,7 +76,7 @@ t_node	parse_line(char *temp, int x, int y, int x_counter, int y_counter, int *m
 	i = 0;
 	color = 0;
 	new.x = x * x_space;
-	new.z = ft_atoi(temp) * x_space * 1;
+	new.z = ft_atoi(temp) * x_space;
 	new.y = y * x_space;
 	new.x -= (x_counter * x_space) / 2;
 	new.y -= (y_counter * x_space) / 2;
