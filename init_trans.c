@@ -1,7 +1,10 @@
 #include "fdf.h"
 
-void    (t_trans *trans)
+t_trans    *trans_init(void)
 {
+    t_trans *trans;
+
+    trans = NULL;
     trans->scale = 1;
     trans->z_scale = 1;
     trans->x_pos = 0;
@@ -9,4 +12,5 @@ void    (t_trans *trans)
     trans->x_rot = 0;
     trans->y_rot = 0;
     trans->z_rot = 0;
+    return (trans);
 }

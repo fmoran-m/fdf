@@ -10,14 +10,14 @@ int	rows_counter(char *argv)
 	fd = open(argv, O_RDONLY);
 	temp = get_next_line(fd);
 	if (!temp)
-		return (0); // Control de errores, podemos hacer exit
+		exit(-1); // Control de errores, podemos hacer exit
 	counter++;
 	while (temp != NULL)
 	{
 		free(temp);
 		temp = get_next_line(fd);
 		if (!temp)
-			return (NULL); //Control de errores, podemoos hacer exit
+			exit(-1); //Control de errores, podemoos hacer exit
 		counter++;
 	}
 	close (fd);

@@ -15,47 +15,47 @@ int	percent(int start, int end, int current)
 	return ((distance == 0) ? 1.0 : (placement / distance));
 }
 
-int	get_color(int x0, int y0, int x1, int y1, int x, int y, int dx, int dy, int color1, int color2, int color)
+int	get_color(t_node node1, t_node node2, int x, int y, int dx, int dy, int color)
 {
 	int		red;
 	int		green;
 	int		blue;
 	double	percentage;
 
-	if (color == color2)
-		return (color2);
+	if (color == node2.color)
+		return (node2.color);
 	if (dx > dy)
-		percentage = percent(x0, x1, x);
+		percentage = percent(node1.x, node2.x, x);
 	else
-		percentage = percent(y0, y1, y);
-	red = get_light((color1 >> 16) & 0xFF,
-					(color2 >> 16) & 0xFF,
+		percentage = percent(node1.y, node2.y, y);
+	red = get_light((node1.color >> 16) & 0xFF,
+					(node2.color >> 16) & 0xFF,
 					percentage);
-	green = get_light((color1 >> 8) & 0xFF,
-					(color2 >> 8) & 0xFF,
+	green = get_light((node1.color >> 8) & 0xFF,
+					(node2.color >> 8) & 0xFF,
 					percentage);
-	blue = get_light(color1 & 0xFF,
-					color2 & 0xFF,
+	blue = get_light(node1.color & 0xFF,
+					node2.color & 0xFF,
 					percentage);
 	return ((red << 16) | (green << 8) | blue);
 }
 
 
-void bressen(t_data *mlx, t_node *matrix, int i)
+void bressen(t_node node1, t_node node2, t_mlx *mlx)
 {
-    int dx = abs(x1 - x0);
-    int dy = abs(y1 - y0);
+    int dx = abs(node2.x - node1.x);
+    int dy = abs(node2.y - node1.y);
 	int err_x, err_y;
     int sx, sy;
 	int	x;
 	int y;
-	int	color = color1;
+	int	color = node1.color;
 
-    if (x0 < x1) 
+    if (node1.x < node2.x) 
         sx = 1;
     else 
         sx = -1;
-    if (y0 < y1) 
+    if (node1.y < node2.y) 
         sy = 1;
     else 
 	{
@@ -63,12 +63,12 @@ void bressen(t_data *mlx, t_node *matrix, int i)
 	}
 	err_x = 0;
 	err_y = 0;
-	x = x0;
-	y = y0;
-	while (x != x1 || y != y1)
+	x = node1.x;
+	y = node1.y;
+	while (x != node2.x || y != node2.y)
 	{
-		color = get_color(x0, y0, x1, y1, x, y, dx, dy, color1, color2, color);
-		put_img_pixel(img, x, y, color);
+		color = get_color(node1, node2, x, y, dx, dy, color);
+		put_img_pixel(mlx, x, y, color);
 		err_x += dx;
 		if (err_x >= dy)
 		{

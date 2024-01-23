@@ -1,7 +1,10 @@
 #include "fdf.h"
 
-void	map_init(t_map *map)
+t_map	*map_init(void)
 {
+	t_map *map;
+
+	map = NULL;
 	map->width = 0;
 	map->height = 0;
 	map->max_x = 0;
@@ -10,4 +13,5 @@ void	map_init(t_map *map)
 	map->min_y = SCREEN_HEIGHT;
 	map->max_z = 0;
 	map->min_z = 0;
+	return(map);
 }

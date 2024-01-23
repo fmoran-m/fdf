@@ -29,7 +29,7 @@ static void	ft_rot_y(t_node	*node, t_trans *trans)
 static void	ft_rot_x(t_node	*node, t_trans *trans)
 {
 	int	y;
-	int	x;
+	int	z;
 	int	theta;
 
 	theta = ((trans->x_rot) * M_PI) / 180;
@@ -47,10 +47,9 @@ static void	ft_rotation(t_node *node, t_trans *trans)
 		ft_rot_y(node, trans);
 	if (trans->z_rot != 0)
 		ft_rot_z(node, trans);
-	return (new);
 }
 
-static void	ft_isometric(t_node *node, t_trans *trans)
+static void	ft_isometric(t_node *node)
 {
 	double theta;
 	int		x;
@@ -63,10 +62,10 @@ static void	ft_isometric(t_node *node, t_trans *trans)
 	node->y = y;
 }
 
-static void ft_min(int width, int height)
+static double ft_min(int width, int height)
 {
-	int x;
-	int y; 
+	double x;
+	double y; 
 
 	x = SCREEN_WIDTH / width;
 	y = SCREEN_HEIGHT / height;
@@ -76,29 +75,29 @@ static void ft_min(int width, int height)
 		return (y);
 }
 
-static void	ft_scale_position(t_node *node, t_trans *trans)
+static void	ft_scale_position(t_node *node, t_trans *trans, t_map *map)
 {
-	int	zoom;
-	int	x;
-	int	y;
+	int		x;
+	int		y;
+	double	zoom;
 
-	zoom = ft_min(node->width, node->height);
-	zoom * trans->scale;
-	x = node->x * scale; //Escala
-	y = node->y * scale;
-	x -= (node->width * scale) / 2; //Centrado
-	y -= (node->height * scale) / 2;
+	zoom = ft_min(map->width, map->height) * trans->scale;
+	x = node->x * zoom; //Escala
+	y = node->y * zoom;
+	x -= (map->width * zoom) / 2; //Centrado
+	y -= (map->height * zoom) / 2;
 	node->x = x;
 	node->y = y;
 }
 
-static t_node	transformation(t_node *node, t_trans *trans)
+static t_node	transformation(t_node node, t_trans *trans, t_map *map)
 {
-	ft_scale_position(&node, trans);
+	ft_scale_position(&node, trans, map);
 	ft_rotation(&node, trans);
-	ft_isometric(&node, trans);
-	node->x += SCREEN_WIDTH / 2 + trans->x_pos;
-	node->y += ((SCREEN_HEIGHT + node->height * (trans->scale / 2)) / 2) + trans->y_pos;
+	ft_isometric(&node);
+	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
+	node.y += ((SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2) + trans->y_pos;
+	return (node);
 }
 
 void	draw_line(t_node *matrix, t_map *map, t_mlx *mlx, t_trans *trans)
@@ -110,8 +109,8 @@ void	draw_line(t_node *matrix, t_map *map, t_mlx *mlx, t_trans *trans)
 	i = 0;
 	while (i + 1 < map->height)
 	{
-		node1 = transformation(matrix[i], trans);
-		node2 = transformation(matrix[i + 1], trans);
+		node1 = transformation(matrix[i], trans, map);
+		node2 = transformation(matrix[i + 1], trans, map);
 		bressen(node1, node2, mlx);
 		i++;
 	}

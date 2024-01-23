@@ -57,21 +57,19 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 } t_mlx;
-void	print_fdf(int x_counter, int y_counter, t_node **n_matrix, t_mlx graphic);
-void	put_img_pixel(t_data img, int x, int y, int color);
+void	put_img_pixel(t_mlx *mlx, int x, int y, int color);
 void	free_matrix(char **matrix, int y_counter);
 void	free_nmatrix(t_node **n_matrix, int y_counter);
 int		rows_counter(char *argv);
 int		count_words(char const *s, unsigned char c);
 t_node	parse_line(char *temp, int x, int y, t_map *map);
-t_node	**parse_map(char *argv, t_node **matrix, t_map *map, t_mlx *mlx);
+t_node	**parse_map(char *argv, t_node **matrix, t_map *map);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
 t_mlx 	*graphic_init(void);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-void    (t_node **matrix, t_mlx *mlx, t_map *mlx);
-void	map_init(t_map *map);
+t_map	*map_init(void);
 void	draw_map(t_node **matrix, t_mlx *mlx, t_map *map, t_trans *trans);
-void    init_trans(t_trans *trans);
+t_trans	*trans_init(void);
 void	bressen(t_node node1, t_node node2, t_mlx *mlx);
 void	draw_line(t_node *matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 #endif
