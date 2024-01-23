@@ -65,11 +65,11 @@ int		count_words(char const *s, unsigned char c);
 t_node	parse_line(char *temp, int x, int y, t_map *map);
 t_node	**parse_map(char *argv, t_node **matrix, t_map *map);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_mlx 	*graphic_init(void);
+t_mlx 	graphic_init(void);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_map	*map_init(void);
+t_map	map_init(void);
 void	draw_map(t_node **matrix, t_mlx *mlx, t_map *map, t_trans *trans);
-t_trans	*trans_init(void);
+t_trans	trans_init(void);
 void	bressen(t_node node1, t_node node2, t_mlx *mlx);
 void	draw_line(t_node *matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 #endif
