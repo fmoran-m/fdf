@@ -19,9 +19,13 @@ int	main(int argc, char **argv)
 	if (!matrix) //Control de errores 
 		return (-1);
 	matrix = parse_map(argv[1], matrix, &map);
-	printf("hola\n");
 	trans = trans_init();
-	draw_map(matrix, &mlx, &map, &trans);
+	for (int i = 0; i < map.height; i++)
+	{
+		for (int j = 0; j < map.width; j++)
+			printf("x = %d, y = %d, z = %d, color = %d\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z, matrix[i][j].color);
+	}
+	//draw_map(matrix, &mlx, &map, &trans);
 	//inputs();
 	//mlx_loop(mlx);
 	return (0);
