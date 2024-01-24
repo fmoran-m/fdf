@@ -31,4 +31,5 @@ void    draw_map(t_node **matrix, t_map map, t_mlx mlx, t_trans trans)
         }
         i++;
     }
+    mlx_put_image_to_window(mlx.mlx, mlx.mlx_win, mlx.img, 0, 0);
 }

@@ -57,6 +57,13 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 } t_mlx;
+typedef struct s_control
+{
+	t_trans *trans;
+	t_map	*map;
+	t_mlx	*mlx;
+	t_node **matrix;
+} t_control;
 void	put_img_pixel(t_mlx *mlx, int x, int y, int color);
 void	free_matrix(char **matrix, int y_counter);
 void	free_nmatrix(t_node **n_matrix, int y_counter);
@@ -72,4 +79,5 @@ t_trans	trans_init(void);
 void	bressen(t_node node1, t_node node2, t_mlx *mlx);
 void    draw_map(t_node **matrix, t_map map, t_mlx mlx, t_trans trans);
 t_node	transformation(t_node node, t_trans *trans, t_map *map);
+void	inputs(t_mlx *mlx);
 #endif
