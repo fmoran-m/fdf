@@ -27,7 +27,7 @@ int	main(int argc, char **argv)
 	}
 	printf("%d, %d\n", map.height, map.width);
 	draw_map(matrix, map, &mlx, trans);
-	inputs(&mlx);//, &trans, &map, matrix);
+	inputs(&mlx ,trans, map, matrix);
 	mlx_loop(mlx.mlx);
 	return (0);
 }
