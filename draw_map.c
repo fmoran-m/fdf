@@ -15,6 +15,7 @@ void    draw_map(t_node **matrix, t_map map, t_mlx *mlx, t_trans trans)
         {
             node1 = transformation(matrix[i][j], &trans, &map);
             node2 = transformation(matrix[i][j + 1], &trans, &map);
+	        printf("no error%d\n", i);
             bressen(node1, node2, mlx);
             j++;
         }
