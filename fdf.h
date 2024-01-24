@@ -77,7 +77,7 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
 t_map	map_init(void);
 t_trans	trans_init(void);
 void	bressen(t_node node1, t_node node2, t_mlx *mlx);
-void    draw_map(t_node **matrix, t_map map, t_mlx mlx, t_trans trans);
+void    draw_map(t_node **matrix, t_map map, t_mlx *mlx, t_trans trans);
 t_node	transformation(t_node node, t_trans *trans, t_map *map);
 void	inputs(t_mlx *mlx);
 #endif
