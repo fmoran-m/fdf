@@ -25,8 +25,8 @@ int	main(int argc, char **argv)
 		for (int j = 0; j < map.width; j++)
 			printf("x = %d, y = %d, z = %d, color = %d\n", matrix[i][j].x, matrix[i][j].y, matrix[i][j].z, matrix[i][j].color);
 	}
-	//draw_map(matrix, &mlx, &map, &trans);
+	draw_map(matrix, &mlx, &map, &trans);
 	//inputs();
-	//mlx_loop(mlx);
+	mlx_loop(mlx.mlx);
 	return (0);
 }
