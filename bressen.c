@@ -65,7 +65,7 @@ void bressen(t_node node1, t_node node2, t_mlx *mlx)
 	err_y = 0;
 	x = node1.x;
 	y = node1.y;
-	while (x != node2.x || y != node2.y)
+	while (x < node2.x || y < node2.y)
 	{
 		color = get_color(node1, node2, x, y, dx, dy, color);
 		put_img_pixel(mlx, x, y, color);

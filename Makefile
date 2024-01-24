@@ -6,7 +6,7 @@ LIBFTDIR = ./libft
 
 CC = gcc
 
-CFLAGS = -Wall -Wextra -Werror
+#CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -14,7 +14,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c rows_counter.c free_matrix.c free_nmatrix.c count_words.c parse_line.c get_map_line.c parse_map.c graphic_init.c map_init.c draw_map.c draw_line.c trans_init.c
+SRC = main.c print_fdf.c bressen.c rows_counter.c free_matrix.c free_nmatrix.c count_words.c parse_line.c get_map_line.c parse_map.c graphic_init.c map_init.c trans_init.c draw_map.c transformation.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias
