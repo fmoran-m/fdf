@@ -18,8 +18,17 @@ void    draw_map(t_node **matrix, t_map map, t_mlx mlx, t_trans trans)
             bressen(node1, node2, &mlx);
             j++;
         }
+        j = 0;
+        if (i > 0)
+        {
+            while (j < map.width)
+            {
+                node1 = transformation(matrix[i][j], &trans, &map);
+                node2 = transformation(matrix[i - 1][j], &trans, &map);
+                bressen(node1, node2, &mlx);
+                j++;
+            }
+        }
         i++;
     }
-    i = 0;
-    j = 0;
 }
