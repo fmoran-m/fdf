@@ -12,13 +12,14 @@
 
 #include "fdf.h"
 
-t_mlx   graphic_init(void)
+t_mlx   *graphic_init(void)
 {
-    t_mlx mlx;
+    t_mlx *mlx;
 
-    mlx.mlx = mlx_init();
-	mlx.mlx_win = mlx_new_window(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
-	mlx.img = mlx_new_image(mlx.mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx.addr = mlx_get_data_addr(mlx.img, &mlx.bbp, &mlx.line_length, &mlx.endian);
+	mlx = ft_calloc(1, sizeof(t_mlx));
+    mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
+	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bbp, &mlx->line_length, &mlx->endian);
     return (mlx);
 }

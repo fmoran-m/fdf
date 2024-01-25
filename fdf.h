@@ -3,22 +3,13 @@
 
 # include <math.h>
 # include "libft/libft.h"
-//# include "mlx/mlx.h" //Comentar en 42
-# include <mlx.h>   //Comentar en casa
+# include "mlx/mlx.h" //Comentar en 42
+//# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
 # define MAIN_COLOR	0x00FFFFFF
-/*
-typedef struct s_data
-{
-	void	*img;
-	char	*addr;
-	int		bbp;
-	int		line_length;
-	int		endian;
-} t_data;
-*/
+
 typedef	struct s_trans
 {
 	int	scale;
@@ -59,10 +50,10 @@ typedef struct s_mlx
 } t_mlx;
 typedef struct s_control
 {
-	t_trans trans;
-	t_map	map;
+	t_node	**matrix;
+	t_map	*map;
 	t_mlx	*mlx;
-	t_node **matrix;
+	t_trans	*trans;
 } t_control;
 void	put_img_pixel(t_mlx *mlx, int x, int y, int color);
 void	free_matrix(char **matrix, int y_counter);
@@ -72,12 +63,13 @@ int		count_words(char const *s, unsigned char c);
 t_node	parse_line(char *temp, int x, int y, t_map *map);
 t_node	**parse_map(char *argv, t_node **matrix, t_map *map);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_mlx 	graphic_init(void);
+t_mlx 	*graphic_init(void);
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_map	map_init(void);
-t_trans	trans_init(void);
+t_map	*map_init(void);
+t_trans	*trans_init(void);
 void	bressen(t_node node1, t_node node2, t_mlx *mlx);
-void    draw_map(t_node **matrix, t_map map, t_mlx *mlx, t_trans trans);
+void    draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 t_node	transformation(t_node node, t_trans *trans, t_map *map);
-void	inputs(t_mlx *mlx, t_trans trans, t_map map, t_node **matrix);
+void	inputs(t_mlx *mlx, t_control *control);
+t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans);
 #endif
