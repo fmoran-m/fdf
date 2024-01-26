@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	mlx = graphic_init();
 	draw_map(matrix, map, mlx, trans);
 	control = control_init(map, mlx, matrix, trans);
-	inputs(mlx, control);
+	inputs(control);
 	mlx_loop(mlx->mlx);
 	return (0);
 }
