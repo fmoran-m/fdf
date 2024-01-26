@@ -12,13 +12,13 @@
 
 typedef	struct s_trans
 {
-	int	scale;
-	int	z_scale;
-	int	x_pos;
-	int	y_pos;
-	int	x_rot;
-	int	y_rot;
-	int	z_rot;
+	int		scale;
+	int		z_scale;
+	int		x_pos;
+	int		y_pos;
+	double	x_rot;
+	double	y_rot;
+	double	z_rot;
 } t_trans;
 typedef struct s_map
 {
