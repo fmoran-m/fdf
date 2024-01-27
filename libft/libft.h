@@ -13,7 +13,7 @@
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1 
 # endif
 
 # include <stdlib.h>
@@ -96,4 +96,5 @@ int				write_pointer_address(va_list args);
 char			*free_file(char **file);
 char			*get_next_line(int fd);
 int				ft_atoi_base(const char *str);
+int				ft_strcmp(const char *s1, const char *s2);
 #endif

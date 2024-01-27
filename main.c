@@ -1,6 +1,21 @@
 #include "fdf.h"
 
-int	main(int argc, char **argv)
+static void	file_checker(char *argv)
+{
+	char	*fdf;
+	char	*file_type;
+	int		i;
+
+	fdf = ".fdf";
+	file_type = ft_strrchr(argv, '.');
+	if (!file_type || ft_strcmp(fdf, file_type) != 0)
+	{
+		ft_putendl_fd("Invalid file extension.", 2);
+		exit(-1);
+	}
+}
+
+int	main(int argc, char **argv)\
 {
 	t_map		*map;
 	t_mlx		*mlx;
@@ -11,9 +26,9 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		ft_putendl_fd("Incorrect number of arguments. This function requires exactly 1 argument.", 2);
-		exit(-1);
+		return(-1);
 	}
-	//Strcmp con el .fdf para comprobar si es correcto
+	file_checker(argv[1]);
 	map = map_init(); //exit si falla la memoria
 	map->height = rows_counter(argv[1]); //exit, ojo con los fd
 	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *)); //exit si falla la reserva
