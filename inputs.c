@@ -30,11 +30,13 @@ static	int	key_input(int key, t_control *control)
 	if (key == 'a')
 		control->trans->x_pos -= 15;
 	if (key == 'z')
-		control->trans->z_rot += 1;
+		control->trans->z_rot += 0.05;
 	if (key == 'c')
-		control->trans->y_rot += 1;
+		control->trans->y_rot += 0.05;
 	if (key == 'x')
-		control->trans->x_rot += 1;
+		control->trans->x_rot += 0.05;
+	if (key == 'f')
+		control->trans->z_scale += 1;
 	draw_map(control->matrix, control->map, control->mlx, control->trans);
 	return (0);
 }

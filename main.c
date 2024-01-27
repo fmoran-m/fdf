@@ -9,20 +9,21 @@ int	main(int argc, char **argv)
 	t_control	*control;
 
 	if (argc != 2)
-		return (-1); //Control de error con perror o strerror
+	{
+		ft_putendl_fd("Incorrect number of arguments. This function requires exactly 1 argument.", 2);
+		exit(-1);
+	}
 	//Strcmp con el .fdf para comprobar si es correcto
-	map = map_init();
-	map->height = rows_counter(argv[1]);
-	if (!map->height)
-		return (0); //Control de errores, error de lectura (Puede hacerse exit)
-	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *));
-	if (!matrix) //Control de errores 
-		return (-1);
-	matrix = parse_map(argv[1], matrix, map);
-	trans = trans_init();
-	mlx = graphic_init();
+	map = map_init(); //exit si falla la memoria
+	map->height = rows_counter(argv[1]); //exit, ojo con los fd
+	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *)); //exit si falla la reserva
+	if (!matrix)
+		return(-1);
+	matrix = parse_map(argv[1], matrix, map); //Reservas y lecturas,  mucho ojo
+	trans = trans_init(); //exit reserva de memoria
+	mlx = graphic_init(); //exit reserva de memoria
 	draw_map(matrix, map, mlx, trans);
-	control = control_init(map, mlx, matrix, trans);
+	control = control_init(map, mlx, matrix, trans); //exit en la reserva
 	inputs(control);
 	mlx_loop(mlx->mlx);
 	return (0);

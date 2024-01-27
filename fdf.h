@@ -2,6 +2,7 @@
 # define FDF_H 
 
 # include <math.h>
+# include <errno.h>
 # include "libft/libft.h"
 # include "mlx/mlx.h" //Comentar en 42
 //# include <mlx.h>   //Comentar en casa

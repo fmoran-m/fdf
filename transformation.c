@@ -4,7 +4,7 @@ static t_node	ft_rot_z(t_node	node, t_trans *trans)
 {
 	int	x;
 	int	y;
-	int	theta;
+	double	theta;
 
 	theta = trans->z_rot;
 	x = node.x * cos(theta) - node.y * sin(theta);
@@ -18,7 +18,7 @@ static t_node	ft_rot_y(t_node	node, t_trans *trans)
 {
 	int	x;
 	int	z;
-	int	theta;
+	double	theta;
 
 	theta = trans->y_rot;
 	x = node.x * cos(theta) + node.y * sin(theta);
@@ -32,7 +32,7 @@ static t_node	ft_rot_x(t_node	node, t_trans *trans)
 {
 	int	y;
 	int	z;
-	int	theta;
+	double	theta;
 
 	theta = trans->x_rot;
 	y = node.y * cos(theta) - node.z * sin(theta);
@@ -42,7 +42,7 @@ static t_node	ft_rot_x(t_node	node, t_trans *trans)
 	return (node);
 }
 
-static t_node	ft_isometric(t_node node)
+static t_node	ft_isometric(t_node node, t_trans *trans)
 {
 	double theta;
 	int		x;
@@ -50,7 +50,7 @@ static t_node	ft_isometric(t_node node)
 
 	theta = (30 * M_PI) / 180;
 	x = (node.x * cos(theta)) - (node.y * cos(theta));
-	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - node.z);
+	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - (node.z));
 	node.x = x;
 	node.y = y;
 	return (node);
@@ -91,7 +91,7 @@ t_node	transformation(t_node node, t_trans *trans, t_map *map)
 	node = ft_rot_x(node, trans);
 	node = ft_rot_y(node, trans);
 	node = ft_rot_z(node, trans);
-	node = ft_isometric(node);
+	node = ft_isometric(node, trans);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
 	node.y += ((SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2) + trans->y_pos;
 	return (node);
