@@ -15,7 +15,7 @@ static void	file_checker(char *argv)
 	}
 }
 
-int	main(int argc, char **argv)\
+int	main(int argc, char **argv)
 {
 	t_map		*map;
 	t_mlx		*mlx;
@@ -31,6 +31,8 @@ int	main(int argc, char **argv)\
 	file_checker(argv[1]);
 	map = map_init(); //exit si falla la memoria
 	map->height = rows_counter(argv[1]); //exit, ojo con los fd
+	if (!map->height)
+		return (-1);
 	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *)); //exit si falla la reserva
 	if (!matrix)
 		return(-1);

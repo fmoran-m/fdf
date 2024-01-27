@@ -17,6 +17,8 @@ t_mlx   *graphic_init(void)
     t_mlx *mlx;
 
 	mlx = ft_calloc(1, sizeof(t_mlx));
+	if (!mlx)
+		exit(-1);
     mlx->mlx = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
