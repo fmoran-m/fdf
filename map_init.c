@@ -5,6 +5,8 @@ t_map	*map_init(void)
 	t_map *map;
 
 	map = ft_calloc(1, sizeof(t_map));
+	if (!map)
+		exit_program(MEM_ERR);
 	map->width = 0;
 	map->height = 0;
 	map->max_x = 0;

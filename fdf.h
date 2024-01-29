@@ -4,12 +4,17 @@
 # include <math.h>
 # include <errno.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h" //Comentar en 42
-//# include <mlx.h>   //Comentar en casa
+//# include "mlx/mlx.h" //Comentar en 42
+# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
-# define MAIN_COLOR	0x00FFFFFF
+# define MAIN_COLOR		0x00FFFFFF
+# define ARG_ERR		"Incorrect number of arguments. This function requires exactly 1 argument."
+# define FILE_ERR		"Invalid file extension."
+# define MEM_ERR		"Memory allocation error."
+# define READ_ERR		"Error reading the file."
+# define MAP_ERR		"Incorrect map format. Could be a memory allocation error."
 
 typedef	struct s_trans
 {
@@ -56,21 +61,28 @@ typedef struct s_control
 	t_mlx	*mlx;
 	t_trans	*trans;
 } t_control;
-void	put_img_pixel(t_mlx *mlx, int x, int y, int color);
-void	free_matrix(char **matrix, int y_counter);
-void	free_nmatrix(t_node **n_matrix, int y_counter);
-int		rows_counter(char *argv);
-int		count_words(char const *s, unsigned char c);
-t_node	parse_line(char *temp, int x, int y, t_map *map);
-t_node	**parse_map(char *argv, t_node **matrix, t_map *map);
-t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_mlx 	*graphic_init(void);
-t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_map	*map_init(void);
-t_trans	*trans_init(void);
-void	bressen(t_node node1, t_node node2, t_mlx *mlx);
-void    draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
-t_node	transformation(t_node node, t_trans *trans, t_map *map);
-void	inputs(t_control *control);
+void		put_img_pixel(t_mlx *mlx, int x, int y, int color);
+void		free_matrix(char **matrix, int y_counter);
+int			rows_counter(char *argv, t_map *map);
+int			count_words(char const *s, unsigned char c);
+t_node		parse_node(char *temp, int x, int y, t_map *map);
+t_node		**parse_map(char *argv, t_node **matrix, t_map *map);
+t_node		*get_map_line(t_node *matrix, char *line, t_map *map, int y);
+t_mlx 		*graphic_init(t_node **matrix, t_map *map, t_trans *trans);
+t_node		*get_map_line(t_node *matrix, char *line, t_map *map, int y);
+t_map		*map_init(void);
+t_trans		*trans_init(t_node **matrix, t_map *map);
+void		bressen(t_node node1, t_node node2, t_mlx *mlx);
+void    	draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
+t_node		transformation(t_node node, t_trans *trans, t_map *map);
+void		inputs(t_control *control);
 t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans);
+void		exit_program(char *macro);
+void		exit_free_map(char *macro, t_map *map);
+void		exit_free_onlymatmap(t_node **matrix, t_map *map, int *fd);
+void		exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd, int y);
+void		exit_free_matmap(t_map *map, t_node **matrix);
+void		exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans);
+void		exit_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);
+void		free_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);
 #endif

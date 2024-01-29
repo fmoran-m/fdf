@@ -6,14 +6,14 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:29 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/13 16:56:14 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:02:32 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 1 
+#  define BUFFER_SIZE 1024 
 # endif
 
 # include <stdlib.h>

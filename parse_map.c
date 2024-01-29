@@ -8,13 +8,18 @@ t_node	**parse_map(char *argv, t_node **matrix, t_map *map)
 
 	fd = open(argv, O_RDONLY);
 	line = get_next_line(fd);
+	if (!line)
+		exit_free_onlymatmap(matrix, map, &fd);
 	map->width = count_words(line, ' ');
 	y = 0;
 	while (y < map->height)
 	{
 		matrix[y] = get_map_line(matrix[y], line, map, y);
-		line = get_next_line(fd);
+		if (!matrix[y])
+			exit_free_onlymatmap(matrix, map, &fd);
+		line = get_next_line(fd); //Controlar error creo
 		y++;
 	}
+	close (fd);
 	return (matrix);
 }

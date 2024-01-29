@@ -17,25 +17,25 @@ static int key_close_window(int key, t_control *control)
 }
 static	int	key_input(int key, t_control *control)
 {
-	if (key == 'e')
+	if (key == 14)
 		control->trans->scale += 1;
-	if (key == 'q')
+	if (key == 12)
 		control->trans->scale -= 1;
-	if (key == 'w')
+	if (key == 13)
 		control->trans->y_pos -= 15;
-	if (key == 's')
+	if (key == 1)
 		control->trans->y_pos += 15;
-	if (key == 'd')
+	if (key == 2)
 		control->trans->x_pos += 15;
-	if (key == 'a')
+	if (key == 0)
 		control->trans->x_pos -= 15;
-	if (key == 'z')
+	if (key == 6)
 		control->trans->z_rot += 0.05;
-	if (key == 'c')
+	if (key == 8)
 		control->trans->y_rot += 0.05;
-	if (key == 'x')
+	if (key == 7)
 		control->trans->x_rot += 0.05;
-	if (key == 'f')
+	if (key == 3)
 		control->trans->z_scale += 1;
 	draw_map(control->matrix, control->map, control->mlx, control->trans);
 	return (0);

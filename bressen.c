@@ -2,7 +2,7 @@
 
 int	get_light(int start, int end, double percentage)
 {
-	return ((int)((1 - percentage) * start + percentage * end));
+	return ((int)((1.0f - percentage) * start + percentage * end));
 }
 
 int	percent(int start, int end, int current)
