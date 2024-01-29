@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 	printf("entra\n");
 	inputs(control);
 	mlx_loop(mlx->mlx);
-	free(control);
 	free_all(map, matrix, trans, mlx);
+	free(control);
 	return (0);
 }
