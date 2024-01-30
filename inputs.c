@@ -51,6 +51,8 @@ static	int	key_input(int key, t_control *control)
 		control->trans->x_rot += 0.05;
 	if (key == 3)
 		control->trans->z_scale += 1;
+	if (key == 9)
+		control->trans->z_scale -= 1;
 	if (key == 15)
 		control_reset(control);
 	if (key == 35)

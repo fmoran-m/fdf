@@ -95,11 +95,12 @@ static t_node	ft_scale_position(t_node node, t_trans *trans, t_map *map)
 	y -= (map->height * zoom) / 2;
 	node.x = x;
 	node.y = y;
+	node.z *= trans->z_scale;
 	return (node);
 }
 
 t_node	transformation(t_node node, t_trans *trans, t_map *map)
-{
+{ 
 	if (trans->projection == 1)
 		trans->x_rot_k = 1.0472;
 	else
