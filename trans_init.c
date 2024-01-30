@@ -14,5 +14,7 @@ t_trans    *trans_init(t_node **matrix, t_map *map)
     trans->x_rot = 0;
     trans->y_rot = 0;
     trans->z_rot = 0;
+    trans->projection = 0;
+    trans->x_rot_k = 0;
     return (trans);
 }

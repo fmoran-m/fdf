@@ -33,7 +33,6 @@ int	main(int argc, char **argv)
 	mlx = graphic_init(matrix, map, trans);
 	draw_map(matrix, map, mlx, trans);
 	control = control_init(map, mlx, matrix, trans); //Hacer exit dentro
-	printf("entra\n");
 	inputs(control);
 	mlx_loop(mlx->mlx);
 	free_all(map, matrix, trans, mlx);

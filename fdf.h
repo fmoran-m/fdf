@@ -4,8 +4,8 @@
 # include <math.h>
 # include <errno.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h" //Comentar en 42
-//# include <mlx.h>   //Comentar en casa
+//# include "mlx/mlx.h" //Comentar en 42
+# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
@@ -22,6 +22,8 @@ typedef	struct s_trans
 	int		z_scale;
 	int		x_pos;
 	int		y_pos;
+	int		projection;
+	double	x_rot_k;
 	double	x_rot;
 	double	y_rot;
 	double	z_rot;

@@ -34,7 +34,7 @@ static t_node	ft_rot_x(t_node	node, t_trans *trans)
 	int	z;
 	double	theta;
 
-	theta = trans->x_rot;
+	theta = trans->x_rot + trans->x_rot_k;
 	y = node.y * cos(theta) - node.z * sin(theta);
 	z = node.y * sin(theta) + node.z * cos(theta);
 	node.y = y;
@@ -56,10 +56,23 @@ static t_node	ft_isometric(t_node node, t_trans *trans)
 	return (node);
 }
 
+static t_node	ft_knight(t_node node, t_trans *trans)
+{
+	int	x;
+	int	y;
+
+	x = node.x - (1/2 * node.z);
+	y = node.y - (1/2 * node.z);
+	node.x = x;
+	node.y = y;
+	return (node);
+}
+
 static double ft_min(int width, int height)
 {
 	double x;
 	double y; 
+	double theta;
 
 	x = SCREEN_WIDTH / width / 2;
 	y = SCREEN_HEIGHT / height / 2;
@@ -87,11 +100,18 @@ static t_node	ft_scale_position(t_node node, t_trans *trans, t_map *map)
 
 t_node	transformation(t_node node, t_trans *trans, t_map *map)
 {
+	if (trans->projection == 1)
+		trans->x_rot_k = 1.0472;
+	else
+		trans->x_rot_k = 0;
 	node = ft_scale_position(node, trans, map);
 	node = ft_rot_x(node, trans);
 	node = ft_rot_y(node, trans);
 	node = ft_rot_z(node, trans);
-	node = ft_isometric(node, trans);
+	if (trans->projection == 1 )
+		node = ft_knight(node, trans);
+	if (trans->projection == 0)
+		node = ft_isometric(node, trans);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
 	node.y += ((SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2) + trans->y_pos;
 	return (node);
