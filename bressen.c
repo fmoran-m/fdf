@@ -5,7 +5,7 @@ int	get_light(int start, int end, double percentage)
 	return ((int)((1.0f - percentage) * start + percentage * end));
 }
 
-int	percent(int start, int end, int current)
+double	percent(int start, int end, int current)
 {
 	double	placement;
 	double	distance;
@@ -28,6 +28,7 @@ int	get_color(t_node node1, t_node node2, int x, int y, int dx, int dy, int colo
 		percentage = percent(node1.x, node2.x, x);
 	else
 		percentage = percent(node1.y, node2.y, y);
+	printf("%d\n", percentage);
 	red = get_light((node1.color >> 16) & 0xFF,
 					(node2.color >> 16) & 0xFF,
 					percentage);
