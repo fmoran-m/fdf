@@ -64,7 +64,7 @@ t_node	parse_node(char *temp, int x, int y, t_map *map)
 	if (temp[i] == ',')
 	{
 		i++;
-		color = ft_atoi_base(&temp[i]);//get_color(temp, i);
+		color = ft_atoi_base(&temp[i], 16);//get_color(temp, i);
 	}
 	new.color = color;
 	if (new.x > (map->max_x))

@@ -95,6 +95,6 @@ int				write_upper_hex(va_list args);
 int				write_pointer_address(va_list args);
 char			*free_file(char **file);
 char			*get_next_line(int fd);
-int				ft_atoi_base(const char *str);
+int				ft_atoi_base(const char *str, int base);
 int				ft_strcmp(const char *s1, const char *s2);
 #endif
