@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/01 22:22:31 by fmoran-m          #+#    #+#              #
+#    Updated: 2024/02/01 22:23:57 by fmoran-m         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fdf
 
 LIBFT = ./libft/libft.a
@@ -14,7 +26,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c transformation.c inputs.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c
+SRC = main.c print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c transformation.c inputs.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias

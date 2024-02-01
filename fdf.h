@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 22:23:02 by fmoran-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 # define FDF_H 
 
@@ -104,5 +116,6 @@ void		exit_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);
 void		free_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);
 void		file_checker(char *argv);
 int			ft_abs(int num);
+int			get_color(t_node node1, t_node node2, t_bressen vars);
 t_bressen	bressen_vars_init(t_node node1, t_node node2);
 #endif

@@ -6,12 +6,12 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:49:39 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/01 21:33:51 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/01 22:24:23 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
-
+;
 int	count_words(char const *s, unsigned char c)
 {
 	int	flag;
