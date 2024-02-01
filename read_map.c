@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-t_node	**parse_map(char *argv, t_node **matrix, t_map *map)
+t_node	**read_map(char *argv, t_node **matrix, t_map *map)
 {
 	int			fd;
 	char		*line;

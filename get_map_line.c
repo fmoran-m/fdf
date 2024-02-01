@@ -17,7 +17,7 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	}
 	while (temp[x])
 	{
-		matrix[x] = parse_node(temp[x], x, y, map);
+		matrix[x] = read_node(temp[x], x, y, map);
 		if (matrix[x].x == -1)
 		{
 			free_matrix(temp, map->width);

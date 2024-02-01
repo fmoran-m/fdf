@@ -99,7 +99,7 @@ static t_node	ft_scale_position(t_node node, t_trans *trans, t_map *map)
 	return (node);
 }
 
-t_node	transformation(t_node node, t_trans *trans, t_map *map)
+t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 { 
 	if (trans->projection == 1)
 		trans->x_rot_k = 1.0472;

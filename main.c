@@ -1,20 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/01 18:16:45 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 20:58:18 by fmoran-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
-
-static void	file_checker(char *argv)
-{
-	char	*fdf;
-	char	*file_type;
-	int		i;
-
-	fdf = ".fdf";
-	file_type = ft_strrchr(argv, '.');
-	if (!file_type || ft_strcmp(fdf, file_type) != 0)
-		exit_program(FILE_ERR);
-}
 
 static int	render_frame(t_control *control)
 {
-	printf("%d\n", control->trans->z_rot_bool);
 	if (control->trans->z_rot_bool == 1)
 		control->trans->z_rot += 0.05;
 	if (control->trans->x_rot_bool == 1)
@@ -41,7 +40,7 @@ int	main(int argc, char **argv)
 	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *));
 	if (!matrix)
 		exit_free_map(MEM_ERR, map);
-	matrix = parse_map(argv[1], matrix, map);
+	matrix = read_map(argv[1], matrix, map);
 	trans = trans_init(matrix, map); 
 	mlx = graphic_init(matrix, map, trans);
 	draw_map(matrix, map, mlx, trans);
