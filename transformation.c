@@ -89,9 +89,9 @@ static t_node	ft_scale_position(t_node node, t_trans *trans, t_map *map)
 	double	zoom;
 
 	zoom = ft_min(map->width, map->height) + trans->scale;
-	x = node.x * zoom; //Escala
+	x = node.x * zoom;
 	y = node.y * zoom;
-	x -= (map->width * zoom) / 2; //Centrado
+	x -= (map->width * zoom) / 2;
 	y -= (map->height * zoom) / 2;
 	node.x = x;
 	node.y = y;

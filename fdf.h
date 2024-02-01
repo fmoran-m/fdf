@@ -9,7 +9,7 @@
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
-# define MAIN_COLOR		0x00FFFFFF
+# define MAIN_COLOR		0xFFFFFF
 # define ARG_ERR		"Incorrect number of arguments. This function requires exactly 1 argument."
 # define FILE_ERR		"Invalid file extension."
 # define MEM_ERR		"Memory allocation error."
@@ -26,6 +26,9 @@ typedef	struct s_trans
 	int		mouse_pressed;
 	int		last_x;
 	int		last_y;
+	int		x_rot_bool;
+	int		y_rot_bool;
+	int		z_rot_bool;
 	double	x_mouse;
 	double	y_mouse;
 	double	x_rot_k;
@@ -46,10 +49,10 @@ typedef struct s_map
 } t_map;
 typedef	struct s_node
 {
-	int	x;
-	int	y;
-	int	z;
-	int	color;
+	int				x;
+	int				y;
+	int				z;
+	unsigned int	color;
 } t_node;
 typedef struct s_mlx
 {

@@ -7,7 +7,6 @@ void    draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans)
     t_node  node1;
     t_node  node2;
 
-    printf("%d\n", trans->mouse_pressed);
     i = 0;
     ft_bzero(mlx->addr, SCREEN_WIDTH * SCREEN_HEIGHT * (mlx->bbp / 8));
     while (i < map->height)

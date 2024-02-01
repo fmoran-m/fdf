@@ -15,7 +15,7 @@ double	percent(int start, int end, int current)
 	return ((distance == 0) ? 1.0 : (placement / distance));
 }
 
-int	get_color(t_node node1, t_node node2, int x, int y, int dx, int dy, int color)
+unsigned int	get_color(t_node node1, t_node node2, int x, int y, int dx, int dy, int color)
 {
 	int		red;
 	int		green;
@@ -39,7 +39,6 @@ int	get_color(t_node node1, t_node node2, int x, int y, int dx, int dy, int colo
 					percentage);
 	return ((red << 16) | (green << 8) | blue);
 }
-
 
 void bressen(t_node node1, t_node node2, t_mlx *mlx)
 {

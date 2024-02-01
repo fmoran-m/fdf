@@ -12,6 +12,19 @@ static void	file_checker(char *argv)
 		exit_program(FILE_ERR);
 }
 
+static int	render_frame(t_control *control)
+{
+	printf("%d\n", control->trans->z_rot_bool);
+	if (control->trans->z_rot_bool == 1)
+		control->trans->z_rot += 0.05;
+	if (control->trans->x_rot_bool == 1)
+		control->trans->x_rot += 0.05;
+	if (control->trans->y_rot_bool == 1)
+		control->trans->y_rot += 0.05;
+	draw_map(control->matrix, control->map, control->mlx, control->trans);
+	return (0);
+}
+
 int	main(int argc, char **argv)
 {
 	t_map		*map;
@@ -34,6 +47,7 @@ int	main(int argc, char **argv)
 	draw_map(matrix, map, mlx, trans);
 	control = control_init(map, mlx, matrix, trans); //Hacer exit dentro
 	inputs(control);
+	mlx_loop_hook(mlx->mlx, render_frame, control);
 	mlx_loop(mlx->mlx);
 	free_all(map, matrix, trans, mlx);
 	free(control);
