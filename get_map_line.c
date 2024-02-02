@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-static void free_temp(char **temp)
+static void *free_temp(char **temp)
 {
 	int i;
 
@@ -23,6 +23,28 @@ static void free_temp(char **temp)
 		i++;
 	}
 	free(temp);
+	return (NULL);
+}
+
+static void *free_temp_matrix(char **temp, t_node *matrix)
+{
+	int i;
+
+	i = 0;
+	while (temp[i])
+	{
+		free(temp[i]);
+		i++;
+	}
+	free(temp);
+	free(matrix);
+	return (NULL);
+}
+
+static void *free_node(t_node *node)
+{
+	free(node);
+	return (NULL);
 }
 
 t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
@@ -35,32 +57,19 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	if (!temp)
 		return (NULL);
 	if (temp[0][0] == '\n')
-	{
-		free_temp(temp);
-		return (NULL);
-	}
+		return (free_temp(temp));
 	matrix = (t_node *)ft_calloc(map->width + 1, sizeof(t_node));
 	if (!matrix)
-	{
-		free_temp(temp);
-		return (NULL);
-	}
+		return (free_temp(temp));
 	while (temp[x] && x < map->width && temp[x][0] != '\n' && temp[0][0] != '\n')
 	{
 		matrix[x] = read_node(temp[x], x, y, map);
 		if (matrix[x].x == -1)
-		{
-			free_temp(temp);
-			free(matrix);
-			return (NULL);
-		}
+			return(free_temp_matrix(temp, matrix));
 		x++;
 	}
 	free_temp(temp);
 	if (x < map->width)
-	{
-		free(matrix);
-		return (NULL);
-	}
+		return(free_node(matrix));
 	return (matrix);
 }

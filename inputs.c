@@ -71,14 +71,6 @@ static int	mouse_release(int key, int x, int y, t_control *control)
 
 static int	key_input(int key, t_control *control)
 {
-	if (key == 13)
-		control->trans->y_pos -= 15;
-	if (key == 1)
-		control->trans->y_pos += 15;
-	if (key == 2)
-		control->trans->x_pos += 15;
-	if (key == 0)
-		control->trans->x_pos -= 15;
 	if (key == 6 && !control->trans->z_rot_bool)
 		control->trans->z_rot += 0.05;
 	if (key == 8 && !control->trans->z_rot_bool)
