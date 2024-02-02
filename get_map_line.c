@@ -25,6 +25,7 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	if (!matrix)
 	{
 		free_matrix(temp, map->width);
+		free(matrix);
 		return (NULL);
 	}
 	while (temp[x])
@@ -33,6 +34,7 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 		if (matrix[x].x == -1)
 		{
 			free_matrix(temp, map->width);
+			free(matrix);
 			return (NULL);
 		}
 		x++;

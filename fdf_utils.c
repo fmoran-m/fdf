@@ -47,6 +47,8 @@ int	isxdigit_fdf(char c)
 		return (1);
 	else if (c == ',')
 		return (1);
+	else if (c == '-')
+		return (1);
 	else if (c == '\n')
 		return (1);
 	else

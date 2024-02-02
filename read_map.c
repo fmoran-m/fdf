@@ -27,6 +27,11 @@ t_node	**read_map(char *argv, t_node **matrix, t_map *map)
 	while (y < map->height)
 	{
 		matrix[y] = get_map_line(matrix[y], line, map, y);
+		if (!matrix[y])
+		{
+			free(line);
+			exit_free_matmap_fd(map, matrix, &fd, map->height);
+		}
 		free(line);
 		line = get_next_line(fd);
 		y++;
