@@ -58,5 +58,10 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 		x++;
 	}
 	free_temp(temp);
+	if (x < map->width)
+	{
+		free(matrix);
+		return (NULL);
+	}
 	return (matrix);
 }
