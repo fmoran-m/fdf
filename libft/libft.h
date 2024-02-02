@@ -97,4 +97,5 @@ char			*free_file(char **file);
 char			*get_next_line(int fd);
 int				ft_atoi_base(const char *str);
 int				ft_strcmp(const char *s1, const char *s2);
+int				get_direction(int num1, int num2);
 #endif

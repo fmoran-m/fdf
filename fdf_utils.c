@@ -59,3 +59,15 @@ int	ft_abs(int num)
 		num *= -1;
 	return (num);
 }
+
+int	get_direction(int num1, int num2) 
+{
+	int	s;
+	
+	s = 0;
+	if (num1 < num2)
+		s = 1;
+	else
+		s = -1;
+	return (s);
+}

@@ -32,22 +32,22 @@ int	get_color(t_node node1, t_node node2, t_bressen vars)
 	int		red;
 	int		green;
 	int		blue;
-	double	percentage;
+	double	relative;
 
 	if (vars.color == node2.color)
 		return (node2.color);
 	if (vars.dx > vars.dy)
-		percentage = percent(node1.x, node2.x, vars.x);
+		relative = percent(node1.x, node2.x, vars.x);
 	else
-		percentage = percent(node1.y, node2.y, vars.y);
+		relative = percent(node1.y, node2.y, vars.y);
 	red = get_light((node1.color >> 16) & 0xFF,
 					(node2.color >> 16) & 0xFF,
-					percentage);
+					relative);
 	green = get_light((node1.color >> 8) & 0xFF,
 					(node2.color >> 8) & 0xFF,
-					percentage);
+					relative);
 	blue = get_light(node1.color & 0xFF,
 					node2.color & 0xFF,
-					percentage);
+					relative);
 	return ((red << 16) | (green << 8) | blue);
 }

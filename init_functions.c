@@ -85,8 +85,8 @@ t_bressen	bressen_vars_init(t_node node1, t_node node2)
 	vars.dy = ft_abs(node1.y - node2.y);
 	vars.err_x = 0;
 	vars.err_y = 0;
-	vars.sx = 0;
-	vars.sy = 0;
+	vars.sx = get_direction(node1.x, node2.x);
+	vars.sy = get_direction(node1.y, node2.y);
 	vars.x = node1.x;
 	vars.y = node1.y;
 	vars.color = node1.color;
