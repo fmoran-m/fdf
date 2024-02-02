@@ -34,6 +34,11 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	temp = ft_split(line, ' ');
 	if (!temp)
 		return (NULL);
+	if (temp[0][0] == '\n')
+	{
+		free_temp(temp);
+		return (NULL);
+	}
 	matrix = (t_node *)ft_calloc(map->width + 1, sizeof(t_node));
 	if (!matrix)
 	{
