@@ -41,7 +41,7 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 		free(matrix);
 		return (NULL);
 	}
-	while (temp[x])
+	while (temp[x] && x < map->width)
 	{
 		matrix[x] = read_node(temp[x], x, y, map);
 		if (matrix[x].x == -1)
