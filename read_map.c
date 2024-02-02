@@ -23,6 +23,7 @@ t_node	**read_map(char *argv, t_node **matrix, t_map *map)
 	if (!line)
 		exit_free_onlymatmap(matrix, map, &fd);
 	map->width = count_words(line, ' ');
+	printf("%d\n", map->width);
 	y = 0;
 	while (y < map->height)
 	{

@@ -23,7 +23,7 @@ int	count_words(char const *s, unsigned char c)
 	n = 0;
 	while (s[i])
 	{
-		if (s[i] != c && flag == 1)
+		if (s[i] != c && flag == 1 && s[i] != '\n')
 		{
 			n++;
 			flag = 0;

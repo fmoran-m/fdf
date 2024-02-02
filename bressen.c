@@ -17,7 +17,6 @@ void bressen(t_node node1, t_node node2, t_mlx *mlx)
 	t_bressen	vars;
 
 	vars = bressen_vars_init(node1, node2);
-	printf("entra\n");
 	while (vars.x != node2.x || vars.y != node2.y)
 	{
 		vars.color = get_color(node1, node2, vars);
