@@ -117,5 +117,14 @@ void		free_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);
 void		file_checker(char *argv);
 int			ft_abs(int num);
 int			get_color(t_node node1, t_node node2, t_bressen vars);
+int			get_blue(int color);
+int			get_green(int color);
+int			get_red(int color);
+t_node		rot_x(t_node node, t_trans *trans);
+t_node		rot_y(t_node node, t_trans *trans);
+t_node		rot_z(t_node node, t_trans *trans);
 t_bressen	bressen_vars_init(t_node node1, t_node node2);
+int			mouse_press(int key, int x, int y, t_control *control);
+int			mouse_hold(int x, int y, t_control *control);
+int			mouse_release(int key, int x, int y, t_control *control);
 #endif

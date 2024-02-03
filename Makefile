@@ -26,7 +26,7 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c transformation.c inputs.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c
+SRC = main.c print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c transformation.c inputs.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c mouse_functions_bonus.c rotation.c
 
 OBJS = ${SRC:.c=.o}
 #Hay que añadir los includes como dependencias

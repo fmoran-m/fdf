@@ -12,19 +12,28 @@
 
 #include "fdf.h"
 
-static int	get_light(int start, int end, double percentage)
+static int	inter_color(int start, int end, double relative)
 {
-	return (((1.0 - percentage) * start + percentage * end));
+	int color;
+	int start_color;
+	int	end_color;
+
+	start_color = (1 - relative) * start;
+	end_color = relative * end;
+	color = start_color + end_color;
+	return (color);
 }
 
-static double	percent(int start, int end, int current)
+static double	get_relative(int start, int end, int current)
 {
-	double	placement;
-	double	distance;
+	double	position;
+	double	total;
+	double	relative;
 
-	placement = current - start;
-	distance = end - start;
-	return ((distance == 0) ? 1.0 : (placement / distance));
+	position = current - start;
+	total = end - start;
+	relative = position / total;
+	return (relative);
 }
 
 int	get_color(t_node node1, t_node node2, t_bressen vars)
@@ -37,17 +46,11 @@ int	get_color(t_node node1, t_node node2, t_bressen vars)
 	if (vars.color == node2.color)
 		return (node2.color);
 	if (vars.dx > vars.dy)
-		relative = percent(node1.x, node2.x, vars.x);
+		relative = get_relative(node1.x, node2.x, vars.x);
 	else
-		relative = percent(node1.y, node2.y, vars.y);
-	red = get_light((node1.color >> 16) & 0xFF,
-					(node2.color >> 16) & 0xFF,
-					relative);
-	green = get_light((node1.color >> 8) & 0xFF,
-					(node2.color >> 8) & 0xFF,
-					relative);
-	blue = get_light(node1.color & 0xFF,
-					node2.color & 0xFF,
-					relative);
+		relative = get_relative(node1.y, node2.y, vars.y);
+	red = inter_color(get_red(node1.color), get_red(node2.color), relative);
+	green = inter_color(get_green(node1.color), get_green(node2.color), relative);
+	blue = inter_color(get_blue(node1.color), get_blue(node2.color), relative);
 	return ((red << 16) | (green << 8) | blue);
 }
