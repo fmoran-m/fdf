@@ -19,6 +19,8 @@ t_map	*map_init(void)
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
 		exit_program(MEM_ERR);
+	map->max_z = INT_MIN;
+	map->min_z = INT_MAX;
 	map->width = 0;
 	map->height = 0;
 	return(map);

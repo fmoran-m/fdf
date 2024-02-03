@@ -62,6 +62,8 @@ typedef	struct s_trans
 } t_trans;
 typedef struct s_map
 {
+	int	max_z;
+	int	min_z;
 	int	width;
 	int	height;
 } t_map;
