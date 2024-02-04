@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:40 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/01 22:24:13 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/04 02:37:58 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static t_node	isometric_perspective(t_node node, t_trans *trans)
 
 	theta = (30 * M_PI) / 180;
 	x = (node.x * cos(theta)) - (node.y * cos(theta));
-	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - (node.z));
+	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - (node.z + trans->z_scale));
 	node.x = x;
 	node.y = y;
 	return (node);
@@ -79,6 +79,9 @@ t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 	node = rot_x(node, trans);
 	node = rot_y(node, trans);
 	node = rot_z(node, trans);
+	trans->z_scale = (SCREEN_HEIGHT / (map->max_z - map->min_z)) / 5;
+	if (trans->z_scale < 1)
+		trans->z_scale = 1;
 	if (trans->projection == 1 )
 		node = cavalier_perspective(node, trans);
 	if (trans->projection == 0)
