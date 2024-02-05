@@ -85,6 +85,13 @@ typedef struct s_mlx
 	int		line_length;
 	int		endian;
 } t_mlx;
+typedef struct s_control
+{
+	t_node	**matrix;
+	t_map	*map;
+	t_mlx	*mlx;
+	t_trans	*trans;
+} t_control;
 void		put_img_pixel(t_mlx *mlx, int x, int y, int color);
 void		free_matrix(char **matrix, int y_counter);
 int			rows_counter(char *argv, t_map *map);
@@ -99,7 +106,8 @@ t_trans		*trans_init(t_node **matrix, t_map *map);
 void		bressen(t_node node1, t_node node2, t_mlx *mlx);
 void    	draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 t_node		new_fig(t_node node, t_trans *trans, t_map *map);
-void		inputs(t_mlx *mlx);
+void		inputs(t_control *control);
+t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans);
 int			isxdigit_fdf(char c);
 void		exit_program(char *macro);
 void		exit_free_map(char *macro, t_map *map);
@@ -115,5 +123,11 @@ int			get_color(t_node node1, t_node node2, t_bressen vars);
 int			get_blue(int color);
 int			get_green(int color);
 int			get_red(int color);
+t_node		rot_x(t_node node, t_trans *trans);
+t_node		rot_y(t_node node, t_trans *trans);
+t_node		rot_z(t_node node, t_trans *trans);
 t_bressen	bressen_vars_init(t_node node1, t_node node2);
+int			mouse_press(int key, int x, int y, t_control *control);
+int			mouse_hold(int x, int y, t_control *control);
+int			mouse_release(t_control *control);
 #endif

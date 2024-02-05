@@ -66,6 +66,20 @@ t_mlx   *graphic_init(t_node **matrix, t_map *map, t_trans *trans)
     return (mlx);
 }
 
+t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans)
+{
+	t_control *control;
+
+	control = ft_calloc(1, sizeof(t_control));
+	if (!control)
+		exit_all(map, matrix, trans, mlx);
+	control->map = map;
+	control->mlx = mlx;
+	control->matrix = matrix;
+	control->trans = trans;
+	return (control);
+}
+
 t_bressen	bressen_vars_init(t_node node1, t_node node2)
 {
 	t_bressen	vars;

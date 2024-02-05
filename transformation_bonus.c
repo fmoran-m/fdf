@@ -26,7 +26,7 @@ static t_node	isometric_perspective(t_node node, t_trans *trans)
 	return (node);
 }
 
-static double min_vector(int width, int height)
+double min_vector(int width, int height)
 {
 	double x;
 	double y; 
