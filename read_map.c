@@ -15,28 +15,24 @@
 t_node	**read_map(char *argv, t_node **matrix, t_map *map)
 {
 	int			fd;
-	char		*line;
 	int			y;
 
 	fd = open(argv, O_RDONLY);
-	line = get_next_line(fd);
-	if (!line)
+	map->temp = get_next_line(fd);
+	if (!map->temp)
 		exit_free_onlymatmap(matrix, map, &fd);
-	map->width = count_words(line, ' ');
+	map->width = count_words(map->temp, ' ');
 	y = 0;
 	while (y < map->height)
 	{
-		matrix[y] = get_map_line(matrix[y], line, map, y);
+		matrix[y] = get_map_line(matrix[y], map->temp, map, y);
 		if (!matrix[y])
-		{
-			free(line);
 			exit_free_matmap_fd(map, matrix, &fd, map->height);
-		}
-		free(line);
-		line = get_next_line(fd);
+		free(map->temp);
+		map->temp = get_next_line(fd);
 		y++;
 	}
-	free(line);
+	free(map->temp);
 	close(fd);
 	return (matrix);
 }

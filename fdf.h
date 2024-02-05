@@ -66,13 +66,14 @@ typedef struct s_map
 	int	min_z;
 	int	width;
 	int	height;
+	char *temp;
 } t_map;
 typedef	struct s_node
 {
 	int				x;
 	int				y;
 	int				z;
-	unsigned int	color;
+	int	color;
 } t_node;
 typedef struct s_mlx
 {
@@ -128,5 +129,5 @@ t_node		rot_z(t_node node, t_trans *trans);
 t_bressen	bressen_vars_init(t_node node1, t_node node2);
 int			mouse_press(int key, int x, int y, t_control *control);
 int			mouse_hold(int x, int y, t_control *control);
-int			mouse_release(int key, int x, int y, t_control *control);
+int			mouse_release(t_control *control);
 #endif

@@ -40,6 +40,7 @@ void	exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd, int y)
 
 	i = 0;
 	close(*fd);
+	free(map->temp);
 	free(map);
 	while (i < y)
 	{

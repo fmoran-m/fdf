@@ -39,7 +39,7 @@ t_node	read_node(char *temp, int x, int y, t_map *map)
 
 	i = 0;
 	color = 0;
-	while (temp[i] && temp[i] != ',')
+	while (temp[i] && temp[i] != ',') // ¿Qué pasa si i+1 no es nada?
 	{
 		if (!isxdigit_fdf(temp[i]))
 		{

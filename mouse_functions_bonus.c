@@ -24,7 +24,7 @@ int	mouse_hold(int x, int y, t_control *control)
 	return (0);
 }
 
-int	mouse_release(int key, int x, int y, t_control *control)
+int	mouse_release(t_control *control)
 {
 	control->trans->mouse_pressed = 0;
 	return (0);

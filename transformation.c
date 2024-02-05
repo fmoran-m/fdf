@@ -26,7 +26,7 @@ static t_node	isometric_perspective(t_node node, t_trans *trans)
 	return (node);
 }
 
-static t_node	cavalier_perspective(t_node node, t_trans *trans)
+static t_node	cavalier_perspective(t_node node)
 {
 	int	x;
 	int	y;
@@ -42,7 +42,6 @@ static double min_vector(int width, int height)
 {
 	double x;
 	double y; 
-	double theta;
 
 	x = SCREEN_WIDTH / width / 2;
 	y = SCREEN_HEIGHT / height / 2;
@@ -83,7 +82,7 @@ t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 	if (trans->z_scale < 1)
 		trans->z_scale = 1;
 	if (trans->projection == 1 )
-		node = cavalier_perspective(node, trans);
+		node = cavalier_perspective(node);
 	if (trans->projection == 0)
 		node = isometric_perspective(node, trans);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;

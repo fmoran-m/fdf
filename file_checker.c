@@ -16,7 +16,6 @@ void	file_checker(char *argv)
 {
 	char	*fdf;
 	char	*file_type;
-	int		i;
 
 	fdf = ".fdf";
 	file_type = ft_strrchr(argv, '.');
