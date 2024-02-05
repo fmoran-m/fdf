@@ -28,26 +28,38 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c transformation.c inputs.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
+STD = inputs.c main.c transformation.c
+
+STD_OBJS = ${STD:.c=.o}
+
+SRC = print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
 
 OBJS = ${SRC:.c=.o}
 
-#SRC_BONUS = 
+BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c
 
-#SRC_OBJS = 
+BONUS_OBJS = ${BONUS:.c=.o}
 
-$(NAME): $(OBJS) $(HEADER)
+$(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
+		$(RM) $(BONUS_OBJS)
 		@make -C $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(OBJS) $(LIBFT)
-		$(CC) $(OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(STD_OBJS) $(OBJS) $(LIBFT)
+		$(CC) $(STD_OBJS) $(OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
 
 all: $(NAME)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
 
+bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
+		$(RM) $(STD_OBJS)
+		@make -C $(LIBFTDIR)
+		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(BONUS_OBJS) $(LIBFT)
+		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)
 	cd $(LIBFTDIR) && make clean
 
 fclean: clean

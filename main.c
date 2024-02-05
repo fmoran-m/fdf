@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 	trans = trans_init(matrix, map); 
 	mlx = graphic_init(matrix, map, trans);
 	draw_map(matrix, map, mlx, trans);
-	inputs(mlx);
+	esc_inputs(mlx);
 	mlx_loop(mlx->mlx);
 	free_all(map, matrix, trans, mlx);
 	return (0);
