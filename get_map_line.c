@@ -61,7 +61,8 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	matrix = (t_node *)ft_calloc(map->width + 1, sizeof(t_node));
 	if (!matrix)
 		return (free_temp(temp));
-	while (temp[x] && x < map->width && temp[x][0] != '\n' && temp[0][0] != '\n')
+	while (temp[x] && x < map->width
+		&& temp[x][0] != '\n' && temp[0][0] != '\n')
 	{
 		matrix[x] = read_node(temp[x], x, y, map);
 		if (matrix[x].x == -1)

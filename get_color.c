@@ -50,7 +50,8 @@ int	get_color(t_node node1, t_node node2, t_bressen vars)
 	else
 		relative = get_relative(node1.y, node2.y, vars.y);
 	red = inter_color(get_red(node1.color), get_red(node2.color), relative);
-	green = inter_color(get_green(node1.color), get_green(node2.color), relative);
+	green = inter_color(get_green(node1.color),
+			get_green(node2.color), relative);
 	blue = inter_color(get_blue(node1.color), get_blue(node2.color), relative);
 	return ((red << 16) | (green << 8) | blue);
 }

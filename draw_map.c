@@ -21,19 +21,19 @@ void	draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans)
 	ft_bzero(mlx->addr, SCREEN_WIDTH * SCREEN_HEIGHT * (mlx->bbp / 8));
 	while (i < map->height)
 	{
-		j = 0;
-		while (j + 1 < map->width)
+		j = -1;
+		while (++j + 1 < map->width)
 		{
-			bressen(new_fig(matrix[i][j], trans, map), new_fig(matrix[i][j + 1], trans, map), mlx);
-			j++;
+			bressen(new_fig(matrix[i][j], trans, map),
+				new_fig(matrix[i][j + 1], trans, map), mlx);
 		}
-		j = 0;
+		j = -1;
 		if (i > 0)
 		{
-			while (j < map->width)
+			while (++j < map->width)
 			{
-				bressen(new_fig(matrix[i][j], trans, map), new_fig(matrix[i - 1][j], trans, map), mlx);
-				j++;
+				bressen(new_fig(matrix[i][j], trans, map),
+					new_fig(matrix[i - 1][j], trans, map), mlx);
 			}
 		}
 		i++;

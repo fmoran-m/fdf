@@ -60,12 +60,15 @@ static t_node	scale_position(t_node node, t_trans *trans, t_map *map)
 
 t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 {
+	int	total_height;
+
+	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
 	node = scale_position(node, trans, map);
 	trans->z_scale = (SCREEN_HEIGHT / (map->max_z - map->min_z)) / 5;
 	if (trans->z_scale < 1)
 		trans->z_scale = 1;
 	node = isometric_perspective(node, trans);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
-	node.y += ((SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2) + trans->y_pos;
+	node.y += total_height + trans->y_pos;
 	return (node);
 }

@@ -62,7 +62,8 @@ t_mlx	*graphic_init(t_node **matrix, t_map *map, t_trans *trans)
 	mlx->mlx = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
-	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bbp, &mlx->line_length, &mlx->endian);
+	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bbp,
+			&mlx->line_length, &mlx->endian);
 	return (mlx);
 }
 

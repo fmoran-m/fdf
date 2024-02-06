@@ -22,11 +22,11 @@
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
 # define MAIN_COLOR		0xFFFFFF
-# define ARG_ERR		"Incorrect number of arguments. This function requires exactly 1 argument."
+# define ARG_ERR		"This function requires exactly 1 argument."
 # define FILE_ERR		"Invalid file extension."
 # define MEM_ERR		"Memory allocation error."
 # define READ_ERR		"Error reading the file."
-# define MAP_ERR		"Incorrect map format. Could be a memory allocation error."
+# define MAP_ERR		"Incorrect map format or memory allocation error."
 
 typedef struct s_bressen
 {
@@ -108,7 +108,8 @@ void		draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 t_node		new_fig(t_node node, t_trans *trans, t_map *map);
 void		esc_inputs(t_mlx *mlx);
 void		inputs(t_control *control);
-t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans);
+t_control	*control_init(t_map *map, t_mlx *mlx,
+				t_node **matrix, t_trans *trans);
 int			isxdigit_fdf(char c);
 void		exit_program(char *macro);
 void		exit_free_map(char *macro, t_map *map);
