@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void		exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans)
+void	exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans)
 {
 	int	i;
 

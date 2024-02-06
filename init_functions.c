@@ -14,7 +14,7 @@
 
 t_map	*map_init(void)
 {
-	t_map *map;
+	t_map	*map;
 
 	map = ft_calloc(1, sizeof(t_map));
 	if (!map)
@@ -24,46 +24,46 @@ t_map	*map_init(void)
 	map->min_z = INT_MAX;
 	map->width = 0;
 	map->height = 0;
-	return(map);
+	return (map);
 }
 
-t_trans    *trans_init(t_node **matrix, t_map *map)
+t_trans	*trans_init(t_node **matrix, t_map *map)
 {
-    t_trans *trans;
+	t_trans	*trans;
 
-    trans = ft_calloc(1, sizeof(t_trans));
-    if (!trans)
-        exit_free_matmap(map, matrix);
-    trans->scale = 0;
-    trans->z_scale = 1;
-    trans->x_pos = 0;
-    trans->y_pos = 0;
-    trans->x_rot = 0;
-    trans->y_rot = 0;
-    trans->z_rot = 0;
-    trans->x_rot_bool = 0;
-    trans->y_rot_bool = 0;
-    trans->z_rot_bool = 0;
-    trans->projection = 0;
-    trans->x_rot_k = 0;
-    trans->x_mouse = 0;
-    trans->y_mouse = 0;
-    trans->mouse_pressed = 0;
-    return (trans);
+	trans = ft_calloc(1, sizeof(t_trans));
+	if (!trans)
+		exit_free_matmap(map, matrix);
+	trans->scale = 0;
+	trans->z_scale = 1;
+	trans->x_pos = 0;
+	trans->y_pos = 0;
+	trans->x_rot = 0;
+	trans->y_rot = 0;
+	trans->z_rot = 0;
+	trans->x_rot_bool = 0;
+	trans->y_rot_bool = 0;
+	trans->z_rot_bool = 0;
+	trans->projection = 0;
+	trans->x_rot_k = 0;
+	trans->x_mouse = 0;
+	trans->y_mouse = 0;
+	trans->mouse_pressed = 0;
+	return (trans);
 }
 
-t_mlx   *graphic_init(t_node **matrix, t_map *map, t_trans *trans)
+t_mlx	*graphic_init(t_node **matrix, t_map *map, t_trans *trans)
 {
-    t_mlx *mlx;
+	t_mlx	*mlx;
 
 	mlx = ft_calloc(1, sizeof(t_mlx));
 	if (!mlx)
 		exit_free_matmaptrans(map, matrix, trans);
-    mlx->mlx = mlx_init();
+	mlx->mlx = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT, "FDF");
 	mlx->img = mlx_new_image(mlx->mlx, SCREEN_WIDTH, SCREEN_HEIGHT);
 	mlx->addr = mlx_get_data_addr(mlx->img, &mlx->bbp, &mlx->line_length, &mlx->endian);
-    return (mlx);
+	return (mlx);
 }
 
 t_bressen	bressen_vars_init(t_node node1, t_node node2)

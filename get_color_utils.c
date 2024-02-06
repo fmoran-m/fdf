@@ -2,7 +2,7 @@
 
 int	get_red(int color)
 {
-	int red;
+	int	red;
 
 	red = (color >> 16) & 0xFF;
 	return (red);
@@ -10,7 +10,7 @@ int	get_red(int color)
 
 int	get_green(int color)
 {
-	int green;
+	int	green;
 
 	green = (color >> 8) & 0xFF;
 	return (green);
@@ -18,7 +18,7 @@ int	get_green(int color)
 
 int	get_blue(int color)
 {
-	int blue;
+	int	blue;
 
 	blue = color & 0xFF;
 	return (blue);

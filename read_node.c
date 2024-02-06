@@ -23,7 +23,7 @@ static t_node	intro_node_data(int x, int y, char *temp, int color)
 	return (new);
 }
 
-static void update_map_z_values(t_map *map, int z)
+static void	update_map_z_values(t_map *map, int z)
 {
 	if (z > map->max_z)
 		map->max_z = z;
@@ -39,7 +39,7 @@ t_node	read_node(char *temp, int x, int y, t_map *map)
 
 	i = 0;
 	color = 0;
-	while (temp[i] && temp[i] != ',') // ¿Qué pasa si i+1 no es nada?
+	while (temp[i] && temp[i] != ',')
 	{
 		if (!isxdigit_fdf(temp[i]))
 		{

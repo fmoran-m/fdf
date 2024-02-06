@@ -14,8 +14,8 @@
 
 static int	inter_color(int start, int end, double relative)
 {
-	int color;
-	int start_color;
+	int	color;
+	int	start_color;
 	int	end_color;
 
 	start_color = (1 - relative) * start;

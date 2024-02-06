@@ -18,9 +18,9 @@ static int	close_window(t_mlx *mlx)
 	exit(0);
 }
 
-static int key_close_window(int key, t_mlx *mlx)
+static int	key_close_window(int key, t_mlx *mlx)
 {
-	if(key == 53)
+	if (key == 53)
 	{
 		mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 		exit(0);

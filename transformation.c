@@ -14,22 +14,24 @@
 
 static t_node	isometric_perspective(t_node node, t_trans *trans)
 {
-	double theta;
+	double	theta;
+	int		z;
 	int		x;
 	int		y;
 
 	theta = (30 * M_PI) / 180;
+	z = node.z + trans->z_scale;
 	x = (node.x * cos(theta)) - (node.y * cos(theta));
-	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - (node.z + trans->z_scale));
+	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - z);
 	node.x = x;
 	node.y = y;
 	return (node);
 }
 
-static double min_vector(int width, int height)
+static double	min_vector(int width, int height)
 {
-	double x;
-	double y; 
+	double	x;
+	double	y;
 
 	x = SCREEN_WIDTH / width / 2;
 	y = SCREEN_HEIGHT / height / 2;
@@ -57,7 +59,7 @@ static t_node	scale_position(t_node node, t_trans *trans, t_map *map)
 }
 
 t_node	new_fig(t_node node, t_trans *trans, t_map *map)
-{ 
+{
 	node = scale_position(node, trans, map);
 	trans->z_scale = (SCREEN_HEIGHT / (map->max_z - map->min_z)) / 5;
 	if (trans->z_scale < 1)

@@ -2,8 +2,8 @@
 
 t_node	rot_z(t_node node, t_trans *trans)
 {
-	int	x;
-	int	y;
+	int		x;
+	int		y;
 	double	theta;
 
 	theta = trans->z_rot;
@@ -16,8 +16,8 @@ t_node	rot_z(t_node node, t_trans *trans)
 
 t_node	rot_y(t_node node, t_trans *trans)
 {
-	int	x;
-	int	z;
+	int		x;
+	int		z;
 	double	theta;
 
 	theta = trans->y_rot;
@@ -30,8 +30,8 @@ t_node	rot_y(t_node node, t_trans *trans)
 
 t_node	rot_x(t_node node, t_trans *trans)
 {
-	int	y;
-	int	z;
+	int		y;
+	int		z;
 	double	theta;
 
 	theta = trans->x_rot + trans->x_rot_k;

@@ -1,15 +1,15 @@
 #include "fdf.h"
 
-t_control	*control_init(t_map *map, t_mlx *mlx, t_node **matrix, t_trans *trans)
+t_control	*control_init(t_map *map, t_mlx *mlx, t_node **mat, t_trans *t)
 {
-	t_control *control;
+	t_control	*control;
 
 	control = ft_calloc(1, sizeof(t_control));
 	if (!control)
-		exit_all(map, matrix, trans, mlx);
+		exit_all(map, mat, t, mlx);
 	control->map = map;
 	control->mlx = mlx;
-	control->matrix = matrix;
-	control->trans = trans;
+	control->matrix = mat;
+	control->trans = t;
 	return (control);
 }

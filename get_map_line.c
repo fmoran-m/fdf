@@ -12,9 +12,9 @@
 
 #include "fdf.h"
 
-static void *free_temp(char **temp)
+static void	*free_temp(char **temp)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (temp[i])
@@ -26,9 +26,9 @@ static void *free_temp(char **temp)
 	return (NULL);
 }
 
-static void *free_temp_matrix(char **temp, t_node *matrix)
+static void	*free_temp_matrix(char **temp, t_node *matrix)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (temp[i])
@@ -41,7 +41,7 @@ static void *free_temp_matrix(char **temp, t_node *matrix)
 	return (NULL);
 }
 
-static void *free_node(t_node *node)
+static void	*free_node(t_node *node)
 {
 	free(node);
 	return (NULL);
@@ -65,11 +65,11 @@ t_node	*get_map_line(t_node *matrix, char *line, t_map *map, int y)
 	{
 		matrix[x] = read_node(temp[x], x, y, map);
 		if (matrix[x].x == -1)
-			return(free_temp_matrix(temp, matrix));
+			return (free_temp_matrix(temp, matrix));
 		x++;
 	}
 	free_temp(temp);
 	if (x < map->width)
-		return(free_node(matrix));
+		return (free_node(matrix));
 	return (matrix);
 }

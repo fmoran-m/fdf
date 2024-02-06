@@ -18,11 +18,11 @@ void	exit_program(char *macro)
 	exit (-1);
 }
 
-void	exit_free_map(char *macro, t_map *map)   
+void	exit_free_map(char *macro, t_map *map)
 {
-		free(map);
-		ft_putendl_fd(macro, 2);
-		exit (-1);
+	free(map);
+	ft_putendl_fd(macro, 2);
+	exit (-1);
 }
 
 void	exit_free_onlymatmap(t_node **matrix, t_map *map, int *fd)

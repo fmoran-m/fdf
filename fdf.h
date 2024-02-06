@@ -39,8 +39,8 @@ typedef struct s_bressen
 	int	x;
 	int	y;
 	int	color;
-} t_bressen;
-typedef	struct s_trans
+}	t_bressen;
+typedef struct s_trans
 {
 	int		scale;
 	int		z_scale;
@@ -59,22 +59,22 @@ typedef	struct s_trans
 	double	x_rot;
 	double	y_rot;
 	double	z_rot;
-} t_trans;
+}	t_trans;
 typedef struct s_map
 {
-	int	max_z;
-	int	min_z;
-	int	width;
-	int	height;
-	char *temp;
-} t_map;
-typedef	struct s_node
+	int		max_z;
+	int		min_z;
+	int		width;
+	int		height;
+	char	*temp;
+}	t_map;
+typedef struct s_node
 {
-	int				x;
-	int				y;
-	int				z;
+	int	x;
+	int	y;
+	int	z;
 	int	color;
-} t_node;
+}	t_node;
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -84,14 +84,14 @@ typedef struct s_mlx
 	int		bbp;
 	int		line_length;
 	int		endian;
-} t_mlx;
+}	t_mlx;
 typedef struct s_control
 {
 	t_node	**matrix;
 	t_map	*map;
 	t_mlx	*mlx;
 	t_trans	*trans;
-} t_control;
+}	t_control;
 void		put_img_pixel(t_mlx *mlx, int x, int y, int color);
 void		free_matrix(char **matrix, int y_counter);
 int			rows_counter(char *argv, t_map *map);
@@ -99,12 +99,12 @@ int			count_words(char const *s, unsigned char c);
 t_node		read_node(char *temp, int x, int y, t_map *map);
 t_node		**read_map(char *argv, t_node **matrix, t_map *map);
 t_node		*get_map_line(t_node *matrix, char *line, t_map *map, int y);
-t_mlx 		*graphic_init(t_node **matrix, t_map *map, t_trans *trans);
+t_mlx		*graphic_init(t_node **matrix, t_map *map, t_trans *trans);
 t_node		*get_map_line(t_node *matrix, char *line, t_map *map, int y);
 t_map		*map_init(void);
 t_trans		*trans_init(t_node **matrix, t_map *map);
 void		bressen(t_node node1, t_node node2, t_mlx *mlx);
-void    	draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
+void		draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
 t_node		new_fig(t_node node, t_trans *trans, t_map *map);
 void		esc_inputs(t_mlx *mlx);
 void		inputs(t_control *control);
@@ -130,6 +130,7 @@ t_node		rot_z(t_node node, t_trans *trans);
 t_bressen	bressen_vars_init(t_node node1, t_node node2);
 int			mouse_press(int key, int x, int y, t_control *control);
 int			mouse_hold(int x, int y, t_control *control);
-int	key_input(int key, t_control *control);
+int			key_input(int key, t_control *control);
 int			mouse_release(t_control *control);
+void		control_reset(t_control *control);
 #endif

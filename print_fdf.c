@@ -21,6 +21,6 @@ void	put_img_pixel(t_mlx *mlx, int x, int y, int color)
 	if (x >= 0 && x < SCREEN_WIDTH && y >= 0 && y < SCREEN_HEIGHT)
 	{
 		pixel = mlx->addr + ((mlx->line_length * y) + ((mlx->bbp / 8) * x));
-		*(unsigned int*) pixel = color;
+		*(unsigned int *)pixel = color;
 	}
 }

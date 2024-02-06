@@ -11,12 +11,12 @@
 /* ************************************************************************** */
 
 #include "fdf.h"
-;
+
 int	count_words(char const *s, unsigned char c)
 {
 	int	flag;
 	int	i;
-	int n;
+	int	n;
 
 	flag = 1;
 	i = 0;
@@ -53,7 +53,7 @@ int	isxdigit_fdf(char c)
 		return (1);
 	else
 		return (0);
-} 
+}
 
 int	ft_abs(int num)
 {
@@ -62,10 +62,10 @@ int	ft_abs(int num)
 	return (num);
 }
 
-int	get_direction(int num1, int num2) 
+int	get_direction(int num1, int num2)
 {
 	int	s;
-	
+
 	s = 0;
 	if (num1 < num2)
 		s = 1;

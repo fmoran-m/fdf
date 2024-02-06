@@ -12,7 +12,7 @@
 
 #include "fdf.h"
 
-void bressen(t_node node1, t_node node2, t_mlx *mlx)
+void	bressen(t_node node1, t_node node2, t_mlx *mlx)
 {
 	t_bressen	vars;
 
