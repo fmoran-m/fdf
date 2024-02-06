@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:36 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/04 02:32:02 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/06 04:00:46 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ t_node	read_node(char *temp, int x, int y, t_map *map)
 	if (temp[i] == ',')
 	{
 		i++;
-		color = ft_atoi_base(&temp[i]);
+		color = ft_atoi_base(&temp[i], 16);
 	}
 	new = intro_node_data(x, y, temp, color);
 	update_map_z_values(map, new.z);

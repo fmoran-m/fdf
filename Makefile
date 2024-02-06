@@ -36,7 +36,7 @@ SRC = print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c
 
 OBJS = ${SRC:.c=.o}
 
-BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c
+BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c key_input_bonus.c
 
 BONUS_OBJS = ${BONUS:.c=.o}
 
