@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:47 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 20:14:14 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:45:13 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 int	mouse_press(int key, int x, int y, t_control *control)
 {
-	if (key == 1)
+	if (key == 1 && x < SCREEN_WIDTH && x > 0
+		&& y < SCREEN_HEIGHT && y > 0)
 		control->trans->mouse_pressed = 1;
 	if (key == 4)
 		control->trans->scale += 1;
