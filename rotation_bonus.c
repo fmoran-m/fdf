@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:55 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 20:14:10 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:08:20 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,8 @@ t_node	rot_y(t_node node, t_trans *trans)
 	double	theta;
 
 	theta = trans->y_rot;
-	x = node.x * cos(theta) + node.y * sin(theta);
-	z = node.z * -sin(theta) + node.z * cos(theta);
+	x = node.x * cos(theta) + node.z * sin(theta);
+	z = -node.x * sin(theta) + node.z * cos(theta);
 	node.x = x;
 	node.z = z;
 	return (node);
