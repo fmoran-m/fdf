@@ -6,23 +6,21 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:40 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/04 02:37:58 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 20:27:27 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static t_node	isometric_perspective(t_node node, t_trans *trans)
+static t_node	isometric_perspective(t_node node)
 {
 	double	theta;
-	int		z;
 	int		x;
 	int		y;
 
 	theta = (30 * M_PI) / 180;
-	z = node.z + trans->z_scale;
 	x = (node.x * cos(theta)) - (node.y * cos(theta));
-	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - z);
+	y = ((node.x * sin(theta)) + (node.y * sin(theta)) - node.z);
 	node.x = x;
 	node.y = y;
 	return (node);
@@ -45,16 +43,24 @@ static t_node	scale_position(t_node node, t_trans *trans, t_map *map)
 {
 	int		x;
 	int		y;
+	int		range;
+	double	z_limit;
 	double	zoom;
 
+	range = map->max_z - map->min_z;
 	zoom = min_vector(map->width, map->height) + trans->scale;
 	x = node.x * zoom;
 	y = node.y * zoom;
 	x -= (map->width * zoom) / 2;
 	y -= (map->height * zoom) / 2;
+	if ((map->max_z - map->min_z) != 0)
+		z_limit = ((SCREEN_HEIGHT / range) / 5) + trans->z_scale;
+	else
+		z_limit = (SCREEN_HEIGHT / 5) + trans->z_scale;
+	node.z -= map->min_z;
+	node.z *= z_limit;
 	node.x = x;
 	node.y = y;
-	node.z *= trans->z_scale;
 	return (node);
 }
 
@@ -64,10 +70,7 @@ t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 
 	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
 	node = scale_position(node, trans, map);
-	trans->z_scale = (SCREEN_HEIGHT / (map->max_z - map->min_z)) / 5;
-	if (trans->z_scale < 1)
-		trans->z_scale = 1;
-	node = isometric_perspective(node, trans);
+	node = isometric_perspective(node);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
 	node.y += total_height + trans->y_pos;
 	return (node);
