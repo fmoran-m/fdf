@@ -6,7 +6,7 @@
 #    By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 22:22:31 by fmoran-m          #+#    #+#              #
-#    Updated: 2024/02/08 15:37:56 by fmoran-m         ###   ########.fr        #
+#    Updated: 2024/02/08 21:23:24 by fmoran-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,7 @@ SRC = print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c
 
 OBJS = ${SRC:.c=.o}
 
-BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c key_input_bonus.c control_reset_bonus.c
+BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c key_input_bonus.c control_reset_bonus.c constant_rotation_utils_bonus.c
 
 BONUS_OBJS = ${BONUS:.c=.o}
 

@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 16:00:12 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:34:26 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,4 +133,9 @@ int			mouse_hold(int x, int y, t_control *control);
 int			key_input(int key, t_control *control);
 int			mouse_release(int x, int y, int key, t_control *control);
 void		control_reset(t_control *control);
+void		negative_rotation_z(t_control *trans);
+void		negative_rotation_y(t_control *trans);
+void		negative_rotation_x(t_control *trans);
+void		constant_rotation_x(t_control *control);
+void		constant_rotation_y(t_control *control);
 #endif
