@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:14:45 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 21:38:26 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 22:10:40 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	control_reset(t_control *control)
 {
-	control->trans->scale = 0;
+	control->trans->scale = 1;
 	control->trans->z_scale = 1;
 	control->trans->x_pos = 0;
 	control->trans->y_pos = 0;
