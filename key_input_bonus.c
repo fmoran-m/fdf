@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:16:31 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 16:20:48 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 17:27:03 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,12 +71,7 @@ static int	change_projection(t_control *control)
 int	key_input(int key, t_control *control)
 {
 	if (key == 6 || key == 7 || key == 8)
-	{
 		input_rotation(key, control);
-		printf("%f\n", control->trans->x_rot);
-		printf("%f\n", control->trans->y_rot);
-		printf("%f\n", control->trans->z_rot);
-	}
 	if (key == 3 || key == 9)
 		change_elevation(key, control);
 	if (key == 15)
