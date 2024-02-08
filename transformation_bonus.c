@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:15:54 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 20:30:22 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:50:32 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static t_node	scale_position(t_node node, t_trans *trans, t_map *map)
 	double	zoom;
 
 	range = map->max_z - map->min_z;
-	zoom = min_vector(map->width, map->height) + trans->scale;
+	zoom = min_vector(map->width, map->height) * trans->scale;
 	x = node.x * zoom;
 	y = node.y * zoom;
 	x -= (map->width * zoom) / 2;

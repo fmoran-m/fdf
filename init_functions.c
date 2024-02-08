@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:25:10 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 20:25:23 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:53:42 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_trans	*trans_init(t_node **matrix, t_map *map)
 	trans = ft_calloc(1, sizeof(t_trans));
 	if (!trans)
 		exit_free_matmap(map, matrix);
-	trans->scale = 0;
+	trans->scale = 1;
 	trans->z_scale = 1;
 	trans->x_pos = 0;
 	trans->y_pos = 0;

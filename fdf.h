@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 21:34:26 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 21:52:11 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ typedef struct s_bressen
 }	t_bressen;
 typedef struct s_trans
 {
-	int		scale;
+	double	scale;
 	int		z_scale;
 	int		x_pos;
 	int		y_pos;
