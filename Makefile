@@ -6,7 +6,7 @@
 #    By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 22:22:31 by fmoran-m          #+#    #+#              #
-#    Updated: 2024/02/02 01:28:18 by fmoran-m         ###   ########.fr        #
+#    Updated: 2024/02/08 15:37:56 by fmoran-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ BONUS_OBJS = ${BONUS:.c=.o}
 $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(BONUS_OBJS)
 		@make -C $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(STD_OBJS) $(OBJS) $(LIBFT)
-		$(CC) $(STD_OBJS) $(OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(STD_OBJS) $(OBJS) $(LIBFT)
 
 all: $(NAME)
 
@@ -54,9 +53,7 @@ all: $(NAME)
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
 		@make -C $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(BONUS_OBJS) $(LIBFT)
-		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
-
+		$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(BONUS_OBJS) $(OBJS) $(LIBFT)
 
 clean:
 	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)

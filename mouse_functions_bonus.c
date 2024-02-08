@@ -8,6 +8,8 @@ int	mouse_press(int key, int x, int y, t_control *control)
 		control->trans->scale += 1;
 	if (key == 5)
 		control->trans->scale -= 1;
+	if (control->trans->scale < 0)
+		control->trans->scale = 0;
 	control->trans->last_x = x;
 	control->trans->last_y = y;
 	return (0);
@@ -24,8 +26,11 @@ int	mouse_hold(int x, int y, t_control *control)
 	return (0);
 }
 
-int	mouse_release(t_control *control)
+int	mouse_release(int key, int x, int y, t_control *control)
 {
+	x = 0;
+	y = 0;
+	key = 0;
 	control->trans->mouse_pressed = 0;
 	return (0);
 }

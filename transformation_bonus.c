@@ -46,16 +46,35 @@ static t_node	scale_position(t_node node, t_trans *trans, t_map *map)
 	return (node);
 }
 
+static t_node	cavalier_perspective(t_node node)
+{
+	int	x;
+	int	y;
+
+	x = node.x - (1/2 * node.z);
+	y = node.y - (1/2 * node.z);
+	node.x = x;
+	node.y = y;
+	return (node);
+}
+
 t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 {
-	int	total_height;
+	int total_height;
 
-	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
+	if (trans->projection == 1)
+		trans->x_rot_k = 1.0472;
+	else
+		trans->x_rot_k = 0;
 	node = scale_position(node, trans, map);
-	trans->z_scale = (SCREEN_HEIGHT / (map->max_z - map->min_z)) / 5;
-	if (trans->z_scale < 1)
-		trans->z_scale = 1;
-	node = isometric_perspective(node, trans);
+	node = rot_x(node, trans);
+	node = rot_y(node, trans);
+	node = rot_z(node, trans);
+	if (trans->projection == 1)
+		node = cavalier_perspective(node);
+	if (trans->projection == 0)
+		node = isometric_perspective(node, trans);
+	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
 	node.y += total_height + trans->y_pos;
 	return (node);

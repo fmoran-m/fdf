@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/02 01:28:42 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/08 16:00:12 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,7 @@
 # include <math.h>
 # include <errno.h>
 # include "libft/libft.h"
-# include "mlx/mlx.h" //Comentar en 42
-//# include <mlx.h>   //Comentar en casa
+# include <mlx.h>   //Comentar en casa
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
@@ -132,6 +131,6 @@ t_bressen	bressen_vars_init(t_node node1, t_node node2);
 int			mouse_press(int key, int x, int y, t_control *control);
 int			mouse_hold(int x, int y, t_control *control);
 int			key_input(int key, t_control *control);
-int			mouse_release(t_control *control);
+int			mouse_release(int x, int y, int key, t_control *control);
 void		control_reset(t_control *control);
 #endif
