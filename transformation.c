@@ -49,7 +49,7 @@ static t_node	scale_position(t_node node, t_map *map)
 	zoom = min_vector(map->width, map->height);
 	x = node.x * zoom;
 	y = node.y * zoom;
-	z  = node.z * zoom;
+	z = node.z * zoom;
 	x -= (map->width * zoom) / 2;
 	y -= (map->height * zoom) / 2;
 	node.x = x;
