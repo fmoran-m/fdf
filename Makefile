@@ -20,7 +20,7 @@ CC = cc
 
 LM = make -C
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
@@ -47,8 +47,7 @@ BONUS_OBJS = ${BONUS:.c=.o}
 $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(BONUS_OBJS)
 		@$(LM) $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(STD_OBJS) $(OBJS) $(LIBFT)
-		$(CC) $(OBJS) $(STD_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(STD_OBJS) $(OBJS) $(LIBFT)
 
 all: $(NAME)
 
@@ -58,8 +57,7 @@ all: $(NAME)
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
 		@$(LM) $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(BONUS_OBJS) $(OBJS) $(LIBFT)
-		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(BONUS_OBJS) $(OBJS) $(LIBFT)
 
 clean:
 	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)
