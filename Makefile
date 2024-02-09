@@ -6,7 +6,7 @@
 #    By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/01 22:22:31 by fmoran-m          #+#    #+#              #
-#    Updated: 2024/02/08 21:23:24 by fmoran-m         ###   ########.fr        #
+#    Updated: 2024/02/09 17:57:32 by fmoran-m         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ LM = make -C
 CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
-
-MLXINCLUDE = -I/usr/include -Imlx_linux -O3
 
 INCLUDES = fdf.h
 
@@ -52,7 +50,7 @@ $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 all: $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) $(MLXINCLUDE) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
