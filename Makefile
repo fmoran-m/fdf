@@ -16,11 +16,15 @@ LIBFT = ./libft/libft.a
 
 LIBFTDIR = ./libft
 
-CC = gcc
+CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+LM = make -C
+
+#CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+
+MLXINCLUDE = -I/usr/include -Imlx_linux -O3
 
 INCLUDES = fdf.h
 
@@ -32,7 +36,7 @@ STD = inputs.c main.c transformation.c
 
 STD_OBJS = ${STD:.c=.o}
 
-SRC = print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
+SRC = put_img_pixel.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
 
 OBJS = ${SRC:.c=.o}
 
@@ -42,20 +46,20 @@ BONUS_OBJS = ${BONUS:.c=.o}
 
 $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(BONUS_OBJS)
-		@make -C $(LIBFTDIR)
-		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) -fsanitize=address $(STD_OBJS) $(OBJS) $(LIBFT)
-		#$(CC) $(OBJS) $(STD_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		@$(LM) $(LIBFTDIR)
+		#$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(STD_OBJS) $(OBJS) $(LIBFT)
+		$(CC) $(OBJS) $(STD_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
 
 all: $(NAME)
 
 %.o:%.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+	$(CC) $(CFLAGS) $(MLXINCLUDE) -c $< -o $@
 
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
-		@make -C $(LIBFTDIR)
-		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) -fsanitize=address $(BONUS_OBJS) $(OBJS) $(LIBFT)
-		#$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
+		@$(LM) $(LIBFTDIR)
+		#$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(BONUS_OBJS) $(OBJS) $(LIBFT)
+		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
 
 clean:
 	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)
@@ -67,4 +71,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY = all clean fclean re
+.PHONY = all clean fclean re bonus

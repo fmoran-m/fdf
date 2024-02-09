@@ -16,8 +16,8 @@
 # include <math.h>
 # include <errno.h>
 # include "libft/libft.h"
-# include <mlx.h>   //Comentar en casa
-//# include "mlx/mlx.h"
+//# include <mlx.h>
+# include "mlx/mlx.h"
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080
@@ -114,7 +114,7 @@ int			isxdigit_fdf(char c);
 void		exit_program(char *macro);
 void		exit_free_map(char *macro, t_map *map);
 void		exit_free_onlymatmap(t_node **matrix, t_map *map, int *fd);
-void		exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd, int y);
+void		exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd);
 void		exit_free_matmap(t_map *map, t_node **matrix);
 void		exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans);
 void		exit_all(t_map *map, t_node **matrix, t_trans *trans, t_mlx *mlx);

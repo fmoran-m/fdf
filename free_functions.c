@@ -34,19 +34,11 @@ void	exit_free_onlymatmap(t_node **matrix, t_map *map, int *fd)
 	exit (-1);
 }
 
-void	exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd, int y)
+void	exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd)
 {
-	int	i;
-
-	i = 0;
 	close(*fd);
 	free(map->temp);
 	free(map);
-	while (i < y)
-	{
-		free(matrix[i]);
-		i++;
-	}
 	free(matrix);
 	ft_putendl_fd(MAP_ERR, 2);
 	exit (-1);
