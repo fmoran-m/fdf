@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   def.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/09 17:47:24 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/09 17:47:25 by fmoran-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef DEF_H
 # define DEF_H 
 
@@ -16,7 +28,7 @@ typedef struct s_bressen
 typedef struct s_trans
 {
 	double	scale;
-	int		z_scale;
+	double	z_scale;
 	int		x_pos;
 	int		y_pos;
 	int		projection;

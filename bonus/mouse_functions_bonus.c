@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:13:47 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 21:58:28 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:26:42 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,13 +20,9 @@ int	mouse_press(int key, int x, int y, t_control *control)
 	if (key == 4)
 		control->trans->scale += 0.2;
 	if (key == 5)
-	{
 		control->trans->scale -= 0.2;
-		if (control->trans->scale <= 0.2)
-			control->trans->scale = 0.2;
-	}
-	if (control->trans->scale < 0)
-		control->trans->scale = 0;
+	if (control->trans->scale < 0.2)
+		control->trans->scale = 0.2;
 	control->trans->last_x = x;
 	control->trans->last_y = y;
 	return (0);
