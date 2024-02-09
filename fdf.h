@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 21:52:11 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/09 03:14:49 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <errno.h>
 # include "libft/libft.h"
 # include <mlx.h>   //Comentar en casa
+//# include "mlx/mlx.h"
 
 # define SCREEN_WIDTH	1920
 # define SCREEN_HEIGHT	1080

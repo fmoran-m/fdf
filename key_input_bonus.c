@@ -32,9 +32,9 @@ static int	input_rotation(int key, t_control *control)
 static int	change_elevation(int key, t_control *control)
 {
 	if (key == 3)
-		control->trans->z_scale += 1;
+		control->trans->z_scale += 0.2;
 	if (key == 8)
-		control->trans->z_scale -= 1;
+		control->trans->z_scale -= 0.2;
 	return (0);
 }
 
