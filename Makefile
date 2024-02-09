@@ -32,15 +32,15 @@ MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-STD = inputs.c main.c transformation.c
+STD = std/inputs.c std/main.c std/transformation.c
 
 STD_OBJS = ${STD:.c=.o}
 
-SRC = put_img_pixel.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
+SRC = src/put_img_pixel.c src/bressen.c src/rows_counter.c src/read_node.c src/get_map_line.c src/draw_map.c src/free_functions.c src/free_functions_2.c src/free_matrix.c src/file_checker.c src/init_functions.c src/read_map.c src/fdf_utils.c src/get_color.c src/get_color_utils.c
 
 OBJS = ${SRC:.c=.o}
 
-BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c key_input_bonus.c control_reset_bonus.c constant_rotation_utils_bonus.c
+BONUS = bonus/main_bonus.c bonus/transformation_bonus.c bonus/inputs_bonus.c bonus/control_init_bonus.c bonus/rotation_bonus.c bonus/mouse_functions_bonus.c bonus/key_input_bonus.c bonus/control_reset_bonus.c bonus/constant_rotation_utils_bonus.c
 
 BONUS_OBJS = ${BONUS:.c=.o}
 
