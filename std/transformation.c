@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 22:22:40 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 22:06:05 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:27:34 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,9 @@ static t_node	scale_position(t_node node, t_map *map)
 
 t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 {
-	int	total_height;
-
-	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
 	node = scale_position(node, map);
 	node = isometric_perspective(node);
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
-	node.y += total_height + trans->y_pos;
+	node.y += (SCREEN_HEIGHT / 2) + trans->y_pos;
 	return (node);
 }

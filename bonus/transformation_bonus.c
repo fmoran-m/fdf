@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 20:15:54 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/09 17:45:45 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/09 22:29:08 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ t_node	new_fig(t_node node, t_trans *trans, t_map *map)
 		node = cavalier_perspective(node);
 	if (trans->projection == 0)
 		node = isometric_perspective(node);
-	total_height = (SCREEN_HEIGHT + map->height * (trans->scale / 2)) / 2;
+	total_height = (SCREEN_HEIGHT * trans->scale) / 2;
 	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
 	node.y += total_height + trans->y_pos;
 	return (node);
