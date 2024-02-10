@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   def_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: fmoran-m <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 17:47:38 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/09 17:47:40 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/10 13:38:52 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,6 @@ void		constant_rotation_x(t_control *control);
 void		constant_rotation_y(t_control *control);
 t_node		new_fig_bonus(t_node node, t_trans *trans, t_map *map);
 int			render_frame(t_control *control);
+void		draw_map_bonus(t_node **matrix, t_map *map,
+				t_mlx *mlx, t_trans *trans);
 #endif

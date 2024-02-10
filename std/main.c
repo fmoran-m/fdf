@@ -6,7 +6,7 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:16:45 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 15:41:44 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/02/10 13:18:41 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ int	main(int argc, char **argv)
 	matrix = read_map(argv[1], matrix, map);
 	trans = trans_init(matrix, map);
 	mlx = graphic_init(matrix, map, trans);
-	draw_map(matrix, map, mlx, trans);
+	draw_map(matrix, map, mlx);
 	esc_inputs(mlx);
 	mlx_loop(mlx->mlx);
 	free_all(map, matrix, trans, mlx);
