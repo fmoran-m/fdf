@@ -37,4 +37,6 @@ void		negative_rotation_y(t_control *trans);
 void		negative_rotation_x(t_control *trans);
 void		constant_rotation_x(t_control *control);
 void		constant_rotation_y(t_control *control);
+t_node		new_fig_bonus(t_node node, t_trans *trans, t_map *map);
+int			render_frame(t_control *control);
 #endif

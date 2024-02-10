@@ -70,7 +70,7 @@ static t_node	cavalier_perspective(t_node node)
 	return (node);
 }
 
-t_node	new_fig(t_node node, t_trans *trans, t_map *map)
+t_node	new_fig_bonus(t_node node, t_trans *trans, t_map *map)
 {
 	int	total_height;
 

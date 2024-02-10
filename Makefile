@@ -38,7 +38,7 @@ SRC = src/put_img_pixel.c src/bressen.c src/rows_counter.c src/read_node.c src/g
 
 OBJS = ${SRC:.c=.o}
 
-BONUS = bonus/main_bonus.c bonus/transformation_bonus.c bonus/inputs_bonus.c bonus/control_init_bonus.c bonus/rotation_bonus.c bonus/mouse_functions_bonus.c bonus/key_input_bonus.c bonus/control_reset_bonus.c bonus/constant_rotation_utils_bonus.c
+BONUS = bonus/main_bonus.c bonus/transformation_bonus.c bonus/inputs_bonus.c bonus/control_init_bonus.c bonus/rotation_bonus.c bonus/mouse_functions_bonus.c bonus/key_input_bonus.c bonus/control_reset_bonus.c bonus/constant_rotation_utils_bonus.c bonus/render_frame_bonus.c
 
 BONUS_OBJS = ${BONUS:.c=.o}
 

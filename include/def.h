@@ -83,7 +83,7 @@ t_map		*map_init(void);
 t_trans		*trans_init(t_node **matrix, t_map *map);
 void		bressen(t_node node1, t_node node2, t_mlx *mlx);
 void		draw_map(t_node **matrix, t_map *map, t_mlx *mlx, t_trans *trans);
-t_node		new_fig(t_node node, t_trans *trans, t_map *map);
+t_node		new_fig(t_node node, t_map *map);
 void		esc_inputs(t_mlx *mlx);
 int			isxdigit_fdf(char c);
 void		exit_program(char *macro);

@@ -58,11 +58,11 @@ static t_node	scale_position(t_node node, t_map *map)
 	return (node);
 }
 
-t_node	new_fig(t_node node, t_trans *trans, t_map *map)
+t_node	new_fig(t_node node, t_map *map)
 {
 	node = scale_position(node, map);
 	node = isometric_perspective(node);
-	node.x += SCREEN_WIDTH / 2 + trans->x_pos;
-	node.y += (SCREEN_HEIGHT / 2) + trans->y_pos;
+	node.x += SCREEN_WIDTH / 2;
+	node.y += SCREEN_HEIGHT / 2;
 	return (node);
 }
