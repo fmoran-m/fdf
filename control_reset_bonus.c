@@ -1,26 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_matrix.c                                      :+:      :+:    :+:   */
+/*   control_reset_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 22:22:16 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/01 22:23:15 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/08 20:14:45 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/08 22:10:40 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_matrix(char **matrix, int y_counter)
+void	control_reset(t_control *control)
 {
-	int	i;
-
-	i = 0;
-	while (i < y_counter)
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free (matrix);
+	control->trans->scale = 1;
+	control->trans->z_scale = 1;
+	control->trans->x_pos = 0;
+	control->trans->y_pos = 0;
+	control->trans->x_rot = 0;
+	control->trans->y_rot = 0;
+	control->trans->z_rot = 0;
+	control->trans->x_rot_bool = 0;
+	control->trans->y_rot_bool = 0;
+	control->trans->z_rot_bool = 0;
 }

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2024/02/01 22:22:31 by fmoran-m          #+#    #+#              #
+#    Updated: 2024/02/08 21:23:24 by fmoran-m         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 NAME = fdf
 
 LIBFT = ./libft/libft.a
@@ -6,30 +18,45 @@ LIBFTDIR = ./libft
 
 CC = gcc
 
-#CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
+
+INCLUDES = fdf.h
 
 MLX = ./mlx/libmlx.a
 
 RM = rm -f
 
-SRC = main.c print_fdf.c bressen.c rows_counter.c count_words.c parse_node.c get_map_line.c parse_map.c graphic_init.c map_init.c trans_init.c draw_map.c transformation.c inputs.c control_init.c free_functions.c free_functions_2.c free_matrix.c
+STD = inputs.c main.c transformation.c
+
+STD_OBJS = ${STD:.c=.o}
+
+SRC = print_fdf.c bressen.c rows_counter.c read_node.c get_map_line.c draw_map.c free_functions.c free_functions_2.c free_matrix.c file_checker.c init_functions.c read_map.c fdf_utils.c get_color.c get_color_utils.c
 
 OBJS = ${SRC:.c=.o}
-#Hay que añadir los includes como dependencias
-$(NAME): $(OBJS)
+
+BONUS = main_bonus.c transformation_bonus.c inputs_bonus.c control_init_bonus.c rotation_bonus.c mouse_functions_bonus.c key_input_bonus.c control_reset_bonus.c constant_rotation_utils_bonus.c
+
+BONUS_OBJS = ${BONUS:.c=.o}
+
+$(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
+		$(RM) $(BONUS_OBJS)
 		@make -C $(LIBFTDIR)
-		#$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(OBJS) $(LIBFT)
-		$(CC) $(OBJS) $(LIBFT) $(MLX) -fsanitize=address -Lmlx_linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -g -o $(NAME)
-%.o:%.c
-	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
-	$(CC) $(CFLAGS) -c $< -o $@
+		$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(STD_OBJS) $(OBJS) $(LIBFT)
 
 all: $(NAME)
 
+%.o:%.c
+	$(CC) $(CFLAGS) -I/usr/include -Imlx_linux -O3 -c $< -o $@
+
+bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
+		$(RM) $(STD_OBJS)
+		@make -C $(LIBFTDIR)
+		$(CC) -o $(NAME) $(MLXFLAGS) -fsanitize=address $(BONUS_OBJS) $(OBJS) $(LIBFT)
+
 clean:
-	$(RM) $(OBJS)
+	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)
 	cd $(LIBFTDIR) && make clean
 
 fclean: clean

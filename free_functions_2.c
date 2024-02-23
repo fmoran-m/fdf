@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_functions_2.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/01 22:22:10 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 22:23:08 by fmoran-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
-void		exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans)
+void	exit_free_matmaptrans(t_map *map, t_node **matrix, t_trans *trans)
 {
 	int	i;
 

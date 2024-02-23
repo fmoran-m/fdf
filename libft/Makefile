@@ -12,16 +12,18 @@ SRC =	ft_isalpha.c ft_isascii.c ft_isalnum.c ft_isdigit.c ft_isprint.c ft_strlen
 
 BONUS = ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
 
+HEADER = libft.h
+
 OBJS = ${SRC:.c=.o} 
 
 O.BONUS = ${BONUS:.c=.o}
 
 all:	$(NAME) 
 
-$(NAME): $(OBJS)
+$(NAME): $(OBJS) $(HEADER)
 	$(AR) $(NAME) $(OBJS)
 
-bonus: $(O.BONUS) $(OBJS)
+bonus: $(O.BONUS) $(OBJS) $(HEADER)
 	$(AR) $(NAME) $(O.BONUS) $(OBJS)
 
 %.o:%.c

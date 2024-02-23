@@ -1,16 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 18:16:45 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/08 15:41:44 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/08 20:13:42 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/08 21:27:48 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
+
+static int	render_frame(t_control *control)
+{
+	if (control->trans->z_rot_bool == 1)
+		control->trans->z_rot += 0.05;
+	if (control->trans->z_rot_bool == -1)
+		control->trans->z_rot -= 0.05;
+	if (control->trans->x_rot_bool == 1)
+		control->trans->x_rot += 0.05;
+	if (control->trans->x_rot_bool == -1)
+		control->trans->x_rot -= 0.05;
+	if (control->trans->y_rot_bool == 1)
+		control->trans->y_rot += 0.05;
+	if (control->trans->y_rot_bool == -1)
+		control->trans->y_rot -= 0.05;
+	draw_map(control->matrix, control->map, control->mlx, control->trans);
+	return (0);
+}
 
 int	main(int argc, char **argv)
 {
@@ -18,6 +36,7 @@ int	main(int argc, char **argv)
 	t_mlx		*mlx;
 	t_node		**matrix;
 	t_trans		*trans;
+	t_control	*control;
 
 	if (argc != 2)
 		exit_program(ARG_ERR);
@@ -31,8 +50,11 @@ int	main(int argc, char **argv)
 	trans = trans_init(matrix, map);
 	mlx = graphic_init(matrix, map, trans);
 	draw_map(matrix, map, mlx, trans);
-	esc_inputs(mlx);
+	control = control_init(map, mlx, matrix, trans);
+	inputs(control);
+	mlx_loop_hook(mlx->mlx, render_frame, control);
 	mlx_loop(mlx->mlx);
 	free_all(map, matrix, trans, mlx);
+	free(control);
 	return (0);
 }

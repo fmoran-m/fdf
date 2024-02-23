@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_matrix.c                                      :+:      :+:    :+:   */
+/*   file_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 22:22:16 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/01 22:23:15 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/01 18:16:47 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 18:17:18 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_matrix(char **matrix, int y_counter)
+void	file_checker(char *argv)
 {
-	int	i;
+	char	*fdf;
+	char	*file_type;
 
-	i = 0;
-	while (i < y_counter)
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free (matrix);
+	fdf = ".fdf";
+	file_type = ft_strrchr(argv, '.');
+	if (!file_type || ft_strcmp(fdf, file_type) != 0)
+		exit_program(FILE_ERR);
 }

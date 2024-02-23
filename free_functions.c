@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   free_functions.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/02/01 22:22:14 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 22:23:12 by fmoran-m         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fdf.h"
 
 void	exit_program(char *macro)
@@ -6,11 +18,11 @@ void	exit_program(char *macro)
 	exit (-1);
 }
 
-void	exit_free_map(char *macro, t_map *map)   
+void	exit_free_map(char *macro, t_map *map)
 {
-		free(map);
-		ft_putendl_fd(macro, 2);
-		exit (-1);
+	free(map);
+	ft_putendl_fd(macro, 2);
+	exit (-1);
 }
 
 void	exit_free_onlymatmap(t_node **matrix, t_map *map, int *fd)
@@ -28,6 +40,7 @@ void	exit_free_matmap_fd(t_map *map, t_node **matrix, int *fd, int y)
 
 	i = 0;
 	close(*fd);
+	free(map->temp);
 	free(map);
 	while (i < y)
 	{

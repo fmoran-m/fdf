@@ -1,26 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   free_matrix.c                                      :+:      :+:    :+:   */
+/*   get_color_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 22:22:16 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/01 22:23:15 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/08 20:15:32 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/08 20:15:33 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void	free_matrix(char **matrix, int y_counter)
+int	get_red(int color)
 {
-	int	i;
+	int	red;
 
-	i = 0;
-	while (i < y_counter)
-	{
-		free(matrix[i]);
-		i++;
-	}
-	free (matrix);
+	red = (color >> 16) & 0xFF;
+	return (red);
+}
+
+int	get_green(int color)
+{
+	int	green;
+
+	green = (color >> 8) & 0xFF;
+	return (green);
+}
+
+int	get_blue(int color)
+{
+	int	blue;
+
+	blue = color & 0xFF;
+	return (blue);
 }
