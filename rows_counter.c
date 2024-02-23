@@ -1,6 +1,6 @@
 #include "fdf.h"
 
-int	rows_counter(char *argv)
+int	rows_counter(char *argv, t_map *map)
 {
 	int		counter;
 	int		fd;
@@ -10,9 +10,12 @@ int	rows_counter(char *argv)
 	fd = open(argv, O_RDONLY);
 	temp = get_next_line(fd);
 	if (!temp)
-		return (0);
+	{
+		close(fd);
+		exit_free_map(READ_ERR, map);
+	}
 	counter++;
-	while (temp != NULL)
+	while (temp)
 	{
 		free(temp);
 		temp = get_next_line(fd);

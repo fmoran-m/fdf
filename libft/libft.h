@@ -6,14 +6,14 @@
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/19 18:30:29 by fmoran-m          #+#    #+#             */
-/*   Updated: 2023/12/13 16:56:14 by fmoran-m         ###   ########.fr       */
+/*   Updated: 2024/01/29 14:02:32 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1024 
 # endif
 
 # include <stdlib.h>
@@ -95,5 +95,6 @@ int				write_upper_hex(va_list args);
 int				write_pointer_address(va_list args);
 char			*free_file(char **file);
 char			*get_next_line(int fd);
-int				ft_atoi_base(const char *str);
+int				ft_atoi_base(const char *str, int base);
+int				ft_strcmp(const char *s1, const char *s2);
 #endif

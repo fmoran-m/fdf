@@ -1,23 +1,41 @@
 #include "fdf.h"
 
+static void	file_checker(char *argv)
+{
+	char	*fdf;
+	char	*file_type;
+	int		i;
+
+	fdf = ".fdf";
+	file_type = ft_strrchr(argv, '.');
+	if (!file_type || ft_strcmp(fdf, file_type) != 0)
+		exit_program(FILE_ERR);
+}
+
 int	main(int argc, char **argv)
 {
-	t_loop		loop;
+	t_map		*map;
+	t_mlx		*mlx;
+	t_node		**matrix;
+	t_trans		*trans;
+	t_control	*control;
 
-	loop.y_counter = 0;
 	if (argc != 2)
-		return (-1);
-	loop.graphic = graphic_init();
-	loop.y_counter = rows_counter(argv[1]);
-	if (loop.y_counter == 0)
-		return (-1);
-	loop.matrix = (t_node **)ft_calloc(loop.y_counter + 1, sizeof(t_node *));
-	if (!loop.matrix)
-		return (-1);
-	loop.matrix = fdf_map(argv[1], loop);
-	if (!loop.matrix)
-		return (-1);
-	inputs(&loop);
-	free_nmatrix(loop.matrix, loop.y_counter); //Puede que leak en y_counter
+		exit_program(ARG_ERR);
+	file_checker(argv[1]);
+	map = map_init();
+	map->height = rows_counter(argv[1], map); 
+	matrix = (t_node **)ft_calloc(map->height + 1, sizeof(t_node *));
+	if (!matrix)
+		exit_free_map(MEM_ERR, map);
+	matrix = parse_map(argv[1], matrix, map);
+	trans = trans_init(matrix, map); 
+	mlx = graphic_init(matrix, map, trans);
+	draw_map(matrix, map, mlx, trans);
+	control = control_init(map, mlx, matrix, trans); //Hacer exit dentro
+	inputs(control);
+	mlx_loop(mlx->mlx);
+	free_all(map, matrix, trans, mlx);
+	free(control);
 	return (0);
 }
