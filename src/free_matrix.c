@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   free_matrix.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/09 17:37:16 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/01 22:22:16 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/01 22:23:15 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H 
+#include "../fdf.h"
 
-# include <math.h>
-# include <errno.h>
-# include "libft/libft.h"
-# include "include/values.h"
-# include "include/def.h"
-# include "include/def_bonus.h"
-# include <mlx.h>
-#endif
+void	free_matrix(char **matrix, int y_counter)
+{
+	int	i;
+
+	i = 0;
+	while (i < y_counter)
+	{
+		free(matrix[i]);
+		i++;
+	}
+	free (matrix);
+}

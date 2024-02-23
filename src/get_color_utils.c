@@ -1,23 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   get_color_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fmoran-m <fmoran-m@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/01 22:22:01 by fmoran-m          #+#    #+#             */
-/*   Updated: 2024/02/09 17:37:16 by fmoran-m         ###   ########.fr       */
+/*   Created: 2024/02/08 20:15:32 by fmoran-m          #+#    #+#             */
+/*   Updated: 2024/02/08 20:15:33 by fmoran-m         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H 
+#include "../fdf.h"
 
-# include <math.h>
-# include <errno.h>
-# include "libft/libft.h"
-# include "include/values.h"
-# include "include/def.h"
-# include "include/def_bonus.h"
-# include <mlx.h>
-#endif
+int	get_red(int color)
+{
+	int	red;
+
+	red = (color >> 16) & 0xFF;
+	return (red);
+}
+
+int	get_green(int color)
+{
+	int	green;
+
+	green = (color >> 8) & 0xFF;
+	return (green);
+}
+
+int	get_blue(int color)
+{
+	int	blue;
+
+	blue = color & 0xFF;
+	return (blue);
+}
