@@ -44,6 +44,8 @@ int	mouse_release(int key, int x, int y, t_control *control)
 	x = 0;
 	y = 0;
 	key = 0;
-	control->trans->mouse_pressed = 0;
+	control->trans->mouse_pressed = x;
+	control->trans->mouse_pressed = y;
+	control->trans->mouse_pressed = key;
 	return (0);
 }
