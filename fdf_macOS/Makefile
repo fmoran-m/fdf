@@ -24,6 +24,8 @@ CFLAGS = -Wall -Wextra -Werror
 
 MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
+MLX = ./mlx/libmlx.a
+
 INCLUDES = fdf.h
 
 RM = rm -f
@@ -43,7 +45,7 @@ BONUS_OBJS = ${BONUS:.c=.o}
 $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(BONUS_OBJS)
 		@$(LM) $(LIBFTDIR)
-		$(CC) $(STD_OBJS) $(OBJS) $(CFLAGS) $(MLXFLAGS) $(LIBFT) -o $(NAME)
+		$(CC) $(STD_OBJS) $(OBJS) $(LIBFT) $(MLX) $(CFLAGS) $(MLXFLAGS) -o $(NAME)
 
 all: $(NAME)
 
@@ -53,7 +55,7 @@ all: $(NAME)
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
 		@$(LM) $(LIBFTDIR)
-		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -o $(NAME) 
+		$(CC) $(OBJS) $(BONUS_OBJS) $(CFLAGS) $(MLXFLAGS) $(LIBFT) $(MLX) -o $(NAME) 
 
 clean:
 	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)
