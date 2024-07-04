@@ -26,8 +26,6 @@ MLXFLAGS = -lmlx -framework OpenGL -framework AppKit
 
 INCLUDES = fdf.h
 
-MLX = ./mlx/libmlx.a
-
 RM = rm -f
 
 STD = std/inputs.c std/main.c std/transformation.c std/draw_map.c
@@ -45,7 +43,7 @@ BONUS_OBJS = ${BONUS:.c=.o}
 $(NAME): $(STD_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(BONUS_OBJS)
 		@$(LM) $(LIBFTDIR)
-		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(STD_OBJS) $(OBJS) $(LIBFT)
+		$(CC) $(STD_OBJS) $(OBJS) $(CFLAGS) $(MLXFLAGS) $(LIBFT) -o $(NAME)
 
 all: $(NAME)
 
@@ -55,7 +53,7 @@ all: $(NAME)
 bonus: $(BONUS_OBJS) $(OBJS) $(HEADER)
 		$(RM) $(STD_OBJS)
 		@$(LM) $(LIBFTDIR)
-		$(CC) -o $(NAME) $(CFLAGS) $(MLXFLAGS) $(BONUS_OBJS) $(OBJS) $(LIBFT)
+		$(CC) $(OBJS) $(BONUS_OBJS) $(LIBFT) $(CFLAGS) $(MLXFLAGS) -o $(NAME) 
 
 clean:
 	$(RM) $(STD_OBJS) $(OBJS) $(BONUS_OBJS)

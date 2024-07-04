@@ -19,5 +19,5 @@
 # include "include/values.h"
 # include "include/def.h"
 # include "include/def_bonus.h"
-# include <mlx.h>
+# include "mlx/mlx.h"
 #endif
