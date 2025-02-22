@@ -32,7 +32,7 @@ This project aims to generate a three-dimensional representation in isometric pe
 
 * Execute ``` ./fdf any_map.fdf ```. Use a map from the test_maps folder, or even a custom one that you made yourself or downloaded from the web.
 
-## Bonus Inputs
+## Inputs
 
 * Movement: Mouse click
 
