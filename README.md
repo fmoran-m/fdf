@@ -60,7 +60,7 @@ The representation is three-dimensional and initially isometric, but it includes
 
 ## MLX
 
-The MLX library is a graphical library created by students and staff of the 42 school. [This documentation](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html) is really useful for understanding how it works and is the resource I used throughout the development of the project.
+The MLX is a graphical library created by students and staff of the 42 school. [This documentation](https://harm-smits.github.io/42docs/libs/minilibx/getting_started.html) is really useful for understanding how it works and is the resource I used throughout the development of the project.
 
 In the implementation section, I will not go into details on how to use the library, as it can sometimes be quite cumbersome. The aforementioned guide is comprehensive and addresses most of the necessary aspects to complete a project like this one.
 
