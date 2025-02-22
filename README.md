@@ -4,9 +4,9 @@ This project aims to generate a three-dimensional representation in isometric pe
 
 ## Images
 
-![Figure 1](Figure1.jpg)
-![Figure 2](Figure2.jpg)
-![Figure 3](Figure3.jpg)
+![Figure 1](images/Figure1.jpg)
+![Figure 2](images/Figure2.jpg)
+![Figure 3](images/Figure3.jpg)
 
 ## Installation
 
